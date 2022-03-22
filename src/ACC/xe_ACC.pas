@@ -634,7 +634,7 @@ type
     FSortedBand: TcxGridBand;
 
     AIndex : Integer;
-    // ¿¢¼¿´Ù¿î ³»¿ë(Á¶È¸½Ã Á¶È¸Á¶°Ç ±â·Ï)
+    // ì—‘ì…€ë‹¤ìš´ ë‚´ìš©(ì¡°íšŒì‹œ ì¡°íšŒì¡°ê±´ ê¸°ë¡) ------
     FExcelDownWithHolding : string;
 
     FUseCashMoveDefaultBranch: Boolean;
@@ -752,7 +752,7 @@ var
 begin
   case cxPageControl1.ActivePageIndex of
   5 : begin
-        iBrNo := GridA6View.GetColumnByFieldName('Áö»çÄÚµå').Index;
+        iBrNo := GridA6View.GetColumnByFieldName('ì§€ì‚¬ì½”ë“œ').Index;
         iRow := GridA6View.DataController.FocusedRecordIndex;
         if iRow < 0 then Exit;
         sBrNo := GridA6View.DataController.Values[iRow, iBrNo];
@@ -805,7 +805,7 @@ var
 begin
   case cxPageControl1.ActivePageIndex of
     0 : begin
-          iBrNo := GridA1View.GetColumnByFieldName('Áö»çÄÚµå').Index;
+          iBrNo := GridA1View.GetColumnByFieldName('ì§€ì‚¬ì½”ë“œ').Index;
           iRow := GridA1View.DataController.FocusedRecordIndex;
           if iRow < 0 then Exit;
           sBrNo := GridA1View.DataController.Values[iRow, iBrNo];
@@ -847,28 +847,28 @@ begin
 					iRow := GridA2View.DataController.FocusedRecordIndex;
           if iRow < 0 then Exit;
 
-          iSlip := GridA2View.GetColumnByFieldName('Á¢¼ö¹øÈ£').Index;
+          iSlip := GridA2View.GetColumnByFieldName('ì ‘ìˆ˜ë²ˆí˜¸').Index;
           sSlip := GridA2View.DataController.Values[iRow, iSlip];
         end;
     2 : begin
           iRow := GridA3View.DataController.FocusedRecordIndex;
           if iRow < 0 then Exit;
 
-          iSlip := GridA3View.GetColumnByFieldName('Á¢¼ö¹øÈ£').Index;
-          iKeyNum := GridA3View.GetColumnByFieldName('´ëÇ¥¹øÈ£').Index;
+          iSlip := GridA3View.GetColumnByFieldName('ì ‘ìˆ˜ë²ˆí˜¸').Index;
+          iKeyNum := GridA3View.GetColumnByFieldName('ëŒ€í‘œë²ˆí˜¸').Index;
           sKeyNum := GridA3View.DataController.Values[iRow, iKeyNum];
-          iWKName := GridA3View.GetColumnByFieldName('¿îÇà±â»ç¸í').Index;
+          iWKName := GridA3View.GetColumnByFieldName('ìš´í–‰ê¸°ì‚¬ëª…').Index;
           sWKName := GridA3View.DataController.Values[iRow, iWKName];
 
           sSlip := GridA3View.DataController.Values[iRow, iSlip];
-          iAccTime := GridA3View.GetColumnByFieldName('³¯Â¥').Index;
+          iAccTime := GridA3View.GetColumnByFieldName('ë‚ ì§œ').Index;
           sAccTime := GridA3View.DataController.Values[iRow, iAccTime];
         end;
 	end;
   if sSlip = '' then Exit;
 	if Assigned(Frm_Main.Frm_JON03[GI_JON03_LastFromIdx]) then
 	begin
-			//Å¸»çÄİÀÏ°æ¿ì ±â»ç¿¡ ¼Û±İ ÆË¾÷¸Ş´º Á¦¿Ü 2016.08.23KHS
+			//íƒ€ì‚¬ì½œì¼ê²½ìš° ê¸°ì‚¬ì— ì†¡ê¸ˆ íŒì—…ë©”ë‰´ ì œì™¸ 2016.08.23KHS
 		if ( Not Assigned(Frm_JON07) ) Or ( Frm_JON07 = Nil ) then Frm_JON07 := TFrm_JON07.Create(Nil);
 		Frm_JON07.bTaSaCall := True;
 
@@ -889,7 +889,7 @@ begin
 		frm_Main.proc_SlipHis(sSlip, FormatDateTime('yyyy-mm-dd', now - 2) + '090000', GI_JON03_LastFromIdx);
   end else
   begin
-    ShowMessage('Á¢¼öÇöÈ² ½ÇÇà Áß¿¡¸¸ [¿À´õ»ó¼¼³»¿ªº¸±â]¸¦ ÇÒ¼ö ÀÖ½À´Ï´Ù');
+    ShowMessage('ì ‘ìˆ˜í˜„í™© ì‹¤í–‰ ì¤‘ì—ë§Œ [ì˜¤ë”ìƒì„¸ë‚´ì—­ë³´ê¸°]ë¥¼ í• ìˆ˜ ìˆìŠµë‹ˆë‹¤');
 	end;
 end;
 
@@ -1049,12 +1049,12 @@ begin
 	begin
     cxrbBrCash.Checked := True;
 
-		cxGpCIS.Caption := '  ¡Ø Ä³½¬ ÀÔ±İ º»»ç Áö»ç';
-    cxGpCOS.Caption := '  ¡Ø Ä³½¬ Ãâ±İ º»»ç Áö»ç';
-//    cxGpCOM.Caption := '  ¡Ø Ä³½¬ Ãâ±İ º»»ç Áö»ç';
+		cxGpCIS.Caption := '  â€» ìºì‰¬ ì…ê¸ˆ ë³¸ì‚¬ ì§€ì‚¬';
+    cxGpCOS.Caption := '  â€» ìºì‰¬ ì¶œê¸ˆ ë³¸ì‚¬ ì§€ì‚¬';
+//    cxGpCOM.Caption := '  â€» ìºì‰¬ ì¶œê¸ˆ ë³¸ì‚¬ ì§€ì‚¬';
 
-    rbCashOut.Caption := 'Ä³½¬ Ãâ±İ º»»ç Áö»ç';
-    rbCashIn .Caption := 'Ä³½¬ ÀÔ±İ º»»ç Áö»ç';
+    rbCashOut.Caption := 'ìºì‰¬ ì¶œê¸ˆ ë³¸ì‚¬ ì§€ì‚¬';
+    rbCashIn .Caption := 'ìºì‰¬ ì…ê¸ˆ ë³¸ì‚¬ ì§€ì‚¬';
 
     PnlSelHdOpt.Visible := True;
 
@@ -1079,12 +1079,12 @@ begin
   begin
     cxrbBrCash.Checked := True;
 
-    cxGpCIS.Caption := '  ¡Ø Ä³½¬ ÀÔ±İ Áö»ç';
-    cxGpCOS.Caption := '  ¡Ø Ä³½¬ Ãâ±İ Áö»ç';
-//    cxGpCOM.Caption := '  ¡Ø Ä³½¬ Ãâ±İ Áö»ç';
+    cxGpCIS.Caption := '  â€» ìºì‰¬ ì…ê¸ˆ ì§€ì‚¬';
+    cxGpCOS.Caption := '  â€» ìºì‰¬ ì¶œê¸ˆ ì§€ì‚¬';
+//    cxGpCOM.Caption := '  â€» ìºì‰¬ ì¶œê¸ˆ ì§€ì‚¬';
 
-    rbCashOut.Caption := 'Ä³½¬ Ãâ±İ Áö»ç';
-    rbCashIn .Caption := 'Ä³½¬ ÀÔ±İ Áö»ç';
+    rbCashOut.Caption := 'ìºì‰¬ ì¶œê¸ˆ ì§€ì‚¬';
+    rbCashIn .Caption := 'ìºì‰¬ ì…ê¸ˆ ì§€ì‚¬';
 
     PnlSelHdOpt.Visible := False;
 
@@ -1094,21 +1094,21 @@ begin
 
     cxcbCashMoveBrName1.Properties.Items.Clear;
     cxcbCashMoveBrName1.Properties.Items.Assign(scb_Branch);
-    cxcbCashMoveBrName1.Properties.Items.Insert(0, 'Áö»ç¼±ÅÃ');
+    cxcbCashMoveBrName1.Properties.Items.Insert(0, 'ì§€ì‚¬ì„ íƒ');
     cxcbCashMoveBrName1.Tag := 1;
     cxcbCashMoveBrName1.ItemIndex := 0;
     cxcbCashMoveBrName1.Tag := 0;
 
     cxcbCashMoveBrName2.Properties.Items.Clear;
     cxcbCashMoveBrName2.Properties.Items.Assign(scb_Branch);
-    cxcbCashMoveBrName2.Properties.Items.Insert(0, 'Áö»ç¼±ÅÃ');
+    cxcbCashMoveBrName2.Properties.Items.Insert(0, 'ì§€ì‚¬ì„ íƒ');
     cxcbCashMoveBrName2.Tag := 1;
     cxcbCashMoveBrName2.ItemIndex := 0;
     cxcbCashMoveBrName2.Tag := 0;
 
     cxcbCashMoveBrName4.Properties.Items.Clear;
     cxcbCashMoveBrName4.Properties.Items.Assign(scb_Branch);
-    cxcbCashMoveBrName4.Properties.Items.Insert(0, 'Áö»ç¼±ÅÃ');
+    cxcbCashMoveBrName4.Properties.Items.Insert(0, 'ì§€ì‚¬ì„ íƒ');
     cxcbCashMoveBrName4.Tag := 1;
     cxcbCashMoveBrName4.ItemIndex := 0;
     cxcbCashMoveBrName4.Tag := 0;
@@ -1232,7 +1232,7 @@ procedure TFrm_ACC.FormCreate(Sender: TObject);
 Var i : Integer;
 begin
   try
-    // ³¯Â¥Çü½ÄÀÌ 'yy/mm/dd'ÀÏ°æ¿ì ¿À·ù ¹ß»ı °¡´É¼ºÀ¸·Î ÀÎÇØ ÀÚÃ¼ Display Æ÷¸Ë º¯°æ
+    // ë‚ ì§œí˜•ì‹ì´ 'yy/mm/dd'ì¼ê²½ìš° ì˜¤ë¥˜ ë°œìƒ ê°€ëŠ¥ì„±ìœ¼ë¡œ ì¸í•´ ìì²´ Display í¬ë§· ë³€ê²½
     for i := 0 to ComponentCount - 1 do
     begin
       if Components[i] is TcxDateEdit then
@@ -1246,20 +1246,20 @@ begin
 
   cxPageControl1.ActivePageIndex := 0;
 
-  cxPageControl1.Pages[0].TabVisible := TCK_USER_PER.ACC_BrchCash = '1';                                 // 601.Áö»çÄ³½¬³»¿ª
-  cxPageControl1.Pages[1].TabVisible := TCK_USER_PER.ACC_BankBook = '1';                                 // 602.ÅëÀå½Ä·Î±×
-  cxPageControl1.Pages[2].TabVisible := TCK_USER_PER.ACC_Order = '1';                                    // 603.¿À´õÁ¤»ê
-  cxPageControl1.Pages[3].TabVisible := TCK_USER_PER.ACC_BrchCharge = '1';                               // 604.Áö»çÃæÀü³»¿ª
-  cxPageControl1.Pages[4].TabVisible := TCK_USER_PER.ACC_WkCharge = '1';                                 // 605.±â»çÃæÀü³»¿ª
-  cxPageControl1.Pages[5].TabVisible := TCK_USER_PER.ACC_WKSolution = '1';                               // 606.±â»ç»ç¿ë·á
-  cxPageControl1.Pages[6].TabVisible := TCK_USER_PER.ACC_BrchGainCash = '1';                             // 607.°øÀ¯ÄİÁ¤»ê
-  cxPageControl1.Pages[7].TabVisible := (GT_USERIF.LV = '60') and (TCK_USER_PER.ACC_CASH_MOVIE = '1');   // 608.Ä³½¬ÀÌµ¿
-  cxPageControl1.Pages[8].TabVisible := TCK_USER_PER.ACC_SMS_CASH = '1';                                 // 609.SMSÄ³½¬ÃæÀü
+  cxPageControl1.Pages[0].TabVisible := TCK_USER_PER.ACC_BrchCash = '1';                                 // 601.ì§€ì‚¬ìºì‰¬ë‚´ì—­
+  cxPageControl1.Pages[1].TabVisible := TCK_USER_PER.ACC_BankBook = '1';                                 // 602.í†µì¥ì‹ë¡œê·¸
+  cxPageControl1.Pages[2].TabVisible := TCK_USER_PER.ACC_Order = '1';                                    // 603.ì˜¤ë”ì •ì‚°
+  cxPageControl1.Pages[3].TabVisible := TCK_USER_PER.ACC_BrchCharge = '1';                               // 604.ì§€ì‚¬ì¶©ì „ë‚´ì—­
+  cxPageControl1.Pages[4].TabVisible := TCK_USER_PER.ACC_WkCharge = '1';                                 // 605.ê¸°ì‚¬ì¶©ì „ë‚´ì—­
+  cxPageControl1.Pages[5].TabVisible := TCK_USER_PER.ACC_WKSolution = '1';                               // 606.ê¸°ì‚¬ì‚¬ìš©ë£Œ
+  cxPageControl1.Pages[6].TabVisible := TCK_USER_PER.ACC_BrchGainCash = '1';                             // 607.ê³µìœ ì½œì •ì‚°
+  cxPageControl1.Pages[7].TabVisible := (GT_USERIF.LV = '60') and (TCK_USER_PER.ACC_CASH_MOVIE = '1');   // 608.ìºì‰¬ì´ë™
+  cxPageControl1.Pages[8].TabVisible := TCK_USER_PER.ACC_SMS_CASH = '1';                                 // 609.SMSìºì‰¬ì¶©ì „
 	if TCK_USER_PER.ACC_SMS_CASH_PCK = '1' then
-		cxPageControl1.Pages[9].TabVisible := True else                                 // 621.SMSÄ³½¬ÀÏ°ıÃæÀü
+		cxPageControl1.Pages[9].TabVisible := True else                                 // 621.SMSìºì‰¬ì¼ê´„ì¶©ì „
 		cxPageControl1.Pages[9].TabVisible := False;
 
-	//»ó´ã¿øÀÏ°æ¿ì ¸Ş´º °¨Ãã.ÆÀÀå´Ô Áö½Ã 20210902 KHS
+	//ìƒë‹´ì›ì¼ê²½ìš° ë©”ë‰´ ê°ì¶¤.íŒ€ì¥ë‹˜ ì§€ì‹œ 20210902 KHS
 	if GT_USERIF.LV = '10' then
 		cxPageControl1.Pages[9].TabVisible := False;
   proc_init;
@@ -1293,16 +1293,16 @@ begin
 			bRlt := False;
 			lst_BRList1.Items.Clear;
 			searchBRlist1.Clear;
-			sKey := edtCashMoveBrName1.text; // Á¶È¸ÇÒ Áö»ç¸í ÀĞ±â.
+			sKey := edtCashMoveBrName1.text; // ì¡°íšŒí•  ì§€ì‚¬ëª… ì½ê¸°.
 
-			iOldIdx := cxcbCashMoveBrName1.ItemIndex;  // ÇöÀç index °ªÀ» ÀúÀå.[¸øÃ£À» °æ¿ì ÇöÀç ¼±ÅÃÁö»ç·Î µÇµ¹·ÁÁÜ]
+			iOldIdx := cxcbCashMoveBrName1.ItemIndex;  // í˜„ì¬ index ê°’ì„ ì €ì¥.[ëª»ì°¾ì„ ê²½ìš° í˜„ì¬ ì„ íƒì§€ì‚¬ë¡œ ë˜ëŒë ¤ì¤Œ]
 			cxcbCashMoveBrName1.Tag := 1;
 			lst_BRList1.Items.BeginUpdate;
-			// Áö»ç ¼±ÅÃ Á¤º¸°¡ º¯°æµÇ¸é ÀÏºÎ ÄÁÆ®·ÑÀ» ÃÊ±âÈ­ µÇ´Â Çö»óÀ» ¹æÁöÇÑ´Ù.
+			// ì§€ì‚¬ ì„ íƒ ì •ë³´ê°€ ë³€ê²½ë˜ë©´ ì¼ë¶€ ì»¨íŠ¸ë¡¤ì„ ì´ˆê¸°í™” ë˜ëŠ” í˜„ìƒì„ ë°©ì§€í•œë‹¤.
 			for i := 0 to cxcbCashMoveBrName1.Properties.Items.Count - 1 do
 			begin
 				if (Pos(sKey, cxcbCashMoveBrName1.Properties.Items.Strings[i]) > 0) then
-				begin // Áö»ç¸í  Ã£±â..
+				begin // ì§€ì‚¬ëª…  ì°¾ê¸°..
 					lst_BRList1.Items.Add(cxcbCashMoveBrName1.Properties.Items.Strings[i]);
 					searchBRlist1.Add(inttostr(i));
 					bRlt := True;
@@ -1318,7 +1318,7 @@ begin
 			else
 				lst_BRList1.Height := lst_BRList1.Items.Count * 25;
 			cxcbCashMoveBrName1.Tag := 0;
-			// Áö»ç ¼±ÅÃ Á¤º¸°¡ º¯°æµÇ¸é ÀÏºÎ ÄÁÆ®·ÑÀ» ÃÊ±âÈ­ µÇ´Â Çö»óÀ» ¹æÁöÇÑ´Ù.
+			// ì§€ì‚¬ ì„ íƒ ì •ë³´ê°€ ë³€ê²½ë˜ë©´ ì¼ë¶€ ì»¨íŠ¸ë¡¤ì„ ì´ˆê¸°í™” ë˜ëŠ” í˜„ìƒì„ ë°©ì§€í•œë‹¤.
 			Result := bRlt;
 		end else
 		if ATag = 2 then
@@ -1326,16 +1326,16 @@ begin
 			bRlt := False;
 			lst_BRList2.Items.Clear;
 			searchBRlist2.Clear;
-			sKey := edtCashMoveBrName2.text; // Á¶È¸ÇÒ Áö»ç¸í ÀĞ±â.
+			sKey := edtCashMoveBrName2.text; // ì¡°íšŒí•  ì§€ì‚¬ëª… ì½ê¸°.
 
-			iOldIdx := cxcbCashMoveBrName2.ItemIndex;  // ÇöÀç index °ªÀ» ÀúÀå.[¸øÃ£À» °æ¿ì ÇöÀç ¼±ÅÃÁö»ç·Î µÇµ¹·ÁÁÜ]
+			iOldIdx := cxcbCashMoveBrName2.ItemIndex;  // í˜„ì¬ index ê°’ì„ ì €ì¥.[ëª»ì°¾ì„ ê²½ìš° í˜„ì¬ ì„ íƒì§€ì‚¬ë¡œ ë˜ëŒë ¤ì¤Œ]
 			cxcbCashMoveBrName2.Tag := 1;
 			lst_BRList2.Items.BeginUpdate;
-			// Áö»ç ¼±ÅÃ Á¤º¸°¡ º¯°æµÇ¸é ÀÏºÎ ÄÁÆ®·ÑÀ» ÃÊ±âÈ­ µÇ´Â Çö»óÀ» ¹æÁöÇÑ´Ù.
+			// ì§€ì‚¬ ì„ íƒ ì •ë³´ê°€ ë³€ê²½ë˜ë©´ ì¼ë¶€ ì»¨íŠ¸ë¡¤ì„ ì´ˆê¸°í™” ë˜ëŠ” í˜„ìƒì„ ë°©ì§€í•œë‹¤.
 			for i := 0 to cxcbCashMoveBrName2.Properties.Items.Count - 1 do
 			begin
 				if (Pos(sKey, cxcbCashMoveBrName2.Properties.Items.Strings[i]) > 0) then
-				begin // Áö»ç¸í  Ã£±â..
+				begin // ì§€ì‚¬ëª…  ì°¾ê¸°..
 					lst_BRList2.Items.Add(cxcbCashMoveBrName2.Properties.Items.Strings[i]);
 					searchBRlist2.Add(inttostr(i));
 					bRlt := True;
@@ -1351,7 +1351,7 @@ begin
 			else
 				lst_BRList2.Height := lst_BRList2.Items.Count * 23;
 			cxcbCashMoveBrName2.Tag := 0;
-			// Áö»ç ¼±ÅÃ Á¤º¸°¡ º¯°æµÇ¸é ÀÏºÎ ÄÁÆ®·ÑÀ» ÃÊ±âÈ­ µÇ´Â Çö»óÀ» ¹æÁöÇÑ´Ù.
+			// ì§€ì‚¬ ì„ íƒ ì •ë³´ê°€ ë³€ê²½ë˜ë©´ ì¼ë¶€ ì»¨íŠ¸ë¡¤ì„ ì´ˆê¸°í™” ë˜ëŠ” í˜„ìƒì„ ë°©ì§€í•œë‹¤.
 			Result := bRlt;
 		end else
 		if ATag = 3 then
@@ -1359,16 +1359,16 @@ begin
 			bRlt := False;
 			lst_BRList3.Items.Clear;
 			searchBRlist3.Clear;
-			sKey := edtCashMoveBrName3.text; // Á¶È¸ÇÒ Áö»ç¸í ÀĞ±â.
+			sKey := edtCashMoveBrName3.text; // ì¡°íšŒí•  ì§€ì‚¬ëª… ì½ê¸°.
 
-			iOldIdx := cxcbCashMoveBrName4.ItemIndex;  // ÇöÀç index °ªÀ» ÀúÀå.[¸øÃ£À» °æ¿ì ÇöÀç ¼±ÅÃÁö»ç·Î µÇµ¹·ÁÁÜ]
+			iOldIdx := cxcbCashMoveBrName4.ItemIndex;  // í˜„ì¬ index ê°’ì„ ì €ì¥.[ëª»ì°¾ì„ ê²½ìš° í˜„ì¬ ì„ íƒì§€ì‚¬ë¡œ ë˜ëŒë ¤ì¤Œ]
 			cxcbCashMoveBrName4.Tag := 1;
 			lst_BRList3.Items.BeginUpdate;
-			// Áö»ç ¼±ÅÃ Á¤º¸°¡ º¯°æµÇ¸é ÀÏºÎ ÄÁÆ®·ÑÀ» ÃÊ±âÈ­ µÇ´Â Çö»óÀ» ¹æÁöÇÑ´Ù.
+			// ì§€ì‚¬ ì„ íƒ ì •ë³´ê°€ ë³€ê²½ë˜ë©´ ì¼ë¶€ ì»¨íŠ¸ë¡¤ì„ ì´ˆê¸°í™” ë˜ëŠ” í˜„ìƒì„ ë°©ì§€í•œë‹¤.
 			for i := 0 to cxcbCashMoveBrName4.Properties.Items.Count - 1 do
 			begin
 				if (Pos(sKey, cxcbCashMoveBrName4.Properties.Items.Strings[i]) > 0) then
-				begin // Áö»ç¸í  Ã£±â..
+				begin // ì§€ì‚¬ëª…  ì°¾ê¸°..
 					lst_BRList3.Items.Add(cxcbCashMoveBrName4.Properties.Items.Strings[i]);
 					searchBRlist3.Add(inttostr(i));
 					bRlt := True;
@@ -1384,7 +1384,7 @@ begin
 			else
 				lst_BRList3.Height := lst_BRList3.Items.Count * 23;
 			cxcbCashMoveBrName4.Tag := 0;
-			// Áö»ç ¼±ÅÃ Á¤º¸°¡ º¯°æµÇ¸é ÀÏºÎ ÄÁÆ®·ÑÀ» ÃÊ±âÈ­ µÇ´Â Çö»óÀ» ¹æÁöÇÑ´Ù.
+			// ì§€ì‚¬ ì„ íƒ ì •ë³´ê°€ ë³€ê²½ë˜ë©´ ì¼ë¶€ ì»¨íŠ¸ë¡¤ì„ ì´ˆê¸°í™” ë˜ëŠ” í˜„ìƒì„ ë°©ì§€í•œë‹¤.
 			Result := bRlt;
 		end;
 	Except
@@ -1420,7 +1420,7 @@ begin
 
 //	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 //	begin
-//		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+//		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 //		exit;
 //	end;
 
@@ -1440,7 +1440,7 @@ begin
       if (GT_USERIF.LV = '10') and (not IsPassedManagementEtc(sBrNo)) then
       begin
         Inc(iFail);
-        msg := Format('[%s]Áö»ç - Á¤»ê°ü·Ã °ü¸®±ÇÇÑ ÀÌ°ü(Äİ¼¾ÅÍ »ó´ã¿ø) ¼³Á¤¾ÈÇÔ.', [sBrNm]);
+        msg := Format('[%s]ì§€ì‚¬ - ì •ì‚°ê´€ë ¨ ê´€ë¦¬ê¶Œí•œ ì´ê´€(ì½œì„¼í„° ìƒë‹´ì›) ì„¤ì •ì•ˆí•¨.', [sBrNm]);
         if sErrMsg = '' then sErrMsg := msg
                         else sErrMsg := sErrMsg + CRLF + msg;
         Continue;
@@ -1449,7 +1449,7 @@ begin
       if iSms = 0 then
       begin
         Inc(iFail);
-        msg := Format('[%s]Áö»ç - ÃæÀü±İ¾× 0¿ø.', [sBrNm]);
+        msg := Format('[%s]ì§€ì‚¬ - ì¶©ì „ê¸ˆì•¡ 0ì›.', [sBrNm]);
         if sErrMsg = '' then sErrMsg := msg
                         else sErrMsg := sErrMsg + CRLF + msg;
         Continue;
@@ -1458,7 +1458,7 @@ begin
       if iSms > iCash then
       begin
         Inc(iFail);
-        msg := Format('[%s]Áö»ç - Áö»çÄ³½¬ºÎÁ·.', [sBrNm]);
+        msg := Format('[%s]ì§€ì‚¬ - ì§€ì‚¬ìºì‰¬ë¶€ì¡±.', [sBrNm]);
         if sErrMsg = '' then sErrMsg := msg
                         else sErrMsg := sErrMsg + CRLF + msg;
         Continue;
@@ -1507,13 +1507,13 @@ begin
               end else
               begin
                 Inc(iFail);
-                msg := Format('[%s]Áö»ç - %s.', [sBrNm, ls_MSG_Err]);
+                msg := Format('[%s]ì§€ì‚¬ - %s.', [sBrNm, ls_MSG_Err]);
                 if sErrMsg = '' then sErrMsg := msg
                                 else sErrMsg := sErrMsg + CRLF + msg;
               end;
             except
               Inc(iFail);
-              msg := Format('[%s]Áö»ç - ÀúÀå½ÇÆĞ', [sBrNm]);
+              msg := Format('[%s]ì§€ì‚¬ - ì €ì¥ì‹¤íŒ¨', [sBrNm]);
               if sErrMsg = '' then sErrMsg := msg
                               else sErrMsg := sErrMsg + CRLF + msg;
 
@@ -1526,8 +1526,8 @@ begin
         freeAndNil(slReceive);
       end;
     end;
-    if sErrMsg = '' then GMessagebox(Format('ÀúÀå¿Ï·á - ¼º°ø(%d°Ç)',[iSucc]), CDMSE)
-                    else GMessagebox(Format('ÀúÀå¿Ï·á - ¼º°ø(%d°Ç), ½ÇÆĞ(%d°Ç)',[iSucc, iFail]) + CRLF + sErrMsg, CDMSE);
+    if sErrMsg = '' then GMessagebox(Format('ì €ì¥ì™„ë£Œ - ì„±ê³µ(%dê±´)',[iSucc]), CDMSE)
+                    else GMessagebox(Format('ì €ì¥ì™„ë£Œ - ì„±ê³µ(%dê±´), ì‹¤íŒ¨(%dê±´)',[iSucc, iFail]) + CRLF + sErrMsg, CDMSE);
     BtnSearch1A10.Click;
   except
   end;
@@ -1547,14 +1547,14 @@ var
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
 
 	if (GT_USERIF.LV = '10') and (not IsPassedManagementEtc(GT_SEL_BRNO.BrNo)) then
   begin
-    msg := '[%s(%s)]  Áö»ç¿¡¼­ Á¤»ê°ü·Ã °ü¸®±ÇÇÑ ÀÌ°ü(Äİ¼¾ÅÍ »ó´ã¿ø)À» ¼³Á¤ ÇÏÁö ¾Ê¾Ò½À´Ï´Ù.'
-        + #13#10'(ÇØ´ç Áö»ç°ü¸®ÀÚ¿¡°Ô °ü¸®±ÇÇÑ ÀÌ°ü[È¸»ç>Áö»ç°ü¸®>»ó¼¼¼³Á¤]À» ¿äÃ»¹Ù¶ø´Ï´Ù.)';
+    msg := '[%s(%s)]  ì§€ì‚¬ì—ì„œ ì •ì‚°ê´€ë ¨ ê´€ë¦¬ê¶Œí•œ ì´ê´€(ì½œì„¼í„° ìƒë‹´ì›)ì„ ì„¤ì • í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.'
+        + #13#10'(í•´ë‹¹ ì§€ì‚¬ê´€ë¦¬ìì—ê²Œ ê´€ë¦¬ê¶Œí•œ ì´ê´€[íšŒì‚¬>ì§€ì‚¬ê´€ë¦¬>ìƒì„¸ì„¤ì •]ì„ ìš”ì²­ë°”ëë‹ˆë‹¤.)';
 		GMessagebox(Format(msg, [GT_SEL_BRNO.BrNo, GT_SEL_BRNO.BrName]), CDMSE);
     Exit;
   end;
@@ -1564,13 +1564,13 @@ begin
 
   if iSms = 0 then
   begin
-    GMessagebox('0¿øÀº ÃæÀüÇÒ¼ö ¾ø½À´Ï´Ù.', CDMSE);
+    GMessagebox('0ì›ì€ ì¶©ì „í• ìˆ˜ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
   if iSms > iCash then
   begin
-    GMessagebox('Áö»çÄ³½¬º¸´Ù SMSÃæÀüÄ³½¬°¡ Å©¸é ¾ÈµË´Ï´Ù.', CDMSE);
+    GMessagebox('ì§€ì‚¬ìºì‰¬ë³´ë‹¤ SMSì¶©ì „ìºì‰¬ê°€ í¬ë©´ ì•ˆë©ë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
@@ -1617,7 +1617,7 @@ begin
           else
             GMessagebox(MSG012 + CRLF + ls_MSG_Err, CDMSE);
         except
-          GMessagebox('½ÇÆĞÇÏ¿´½À´Ï´Ù.' + #13#10 + '´Ù½Ã ÇÑ¹ø ½ÃµµÇØ º¸¼¼¿ä',
+          GMessagebox('ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.' + #13#10 + 'ë‹¤ì‹œ í•œë²ˆ ì‹œë„í•´ ë³´ì„¸ìš”',
             CDMSE);
         end;
       end;
@@ -1633,8 +1633,8 @@ procedure TFrm_ACC.proc_Init_SmsCharge;
 begin
   cxLblSMCashA9.Caption := '';
   cxLblBrCashA9.Caption := '';
-  cxLblSMCnt1A9.Caption := '0 ¿ø / °Ç´ç  (ÀÏ¹İSMS¸¸ º¸³¾¶§ Àü¼Û°¡´É°Ç¼ö : °Ç)';
-  cxLblSMCnt2A9.Caption := '0 ¿ø / °Ç´ç  (±¤°íSMS¸¸ º¸³¾¶§ Àü¼Û°¡´É°Ç¼ö : °Ç)';
+  cxLblSMCnt1A9.Caption := '0 ì› / ê±´ë‹¹  (ì¼ë°˜SMSë§Œ ë³´ë‚¼ë•Œ ì „ì†¡ê°€ëŠ¥ê±´ìˆ˜ : ê±´)';
+  cxLblSMCnt2A9.Caption := '0 ì› / ê±´ë‹¹  (ê´‘ê³ SMSë§Œ ë³´ë‚¼ë•Œ ì „ì†¡ê°€ëŠ¥ê±´ìˆ˜ : ê±´)';
   EdtChargeCashA9.Value := 0;
   cxDtStartA9.Date := StrToDate(Date8to10(copy(StartDateTime('yyyymmddhhmmss'), 1, 8)));
   cxDtEndA9.Date := cxDtStartA9.Date + 1;
@@ -1667,7 +1667,7 @@ procedure TFrm_ACC.BtnSearch1A9Click(Sender: TObject);
 begin
   if GT_SEL_BRNO.GUBUN <> '1' then
   begin
-    GMessagebox('SMSÄ³½¬ ÃæÀü³»¿ªÀº Áö»ç¸¦ ¼±ÅÃÇÏ¼Å¾ß ÇÕ´Ï´Ù.', CDMSE);
+    GMessagebox('SMSìºì‰¬ ì¶©ì „ë‚´ì—­ì€ ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.', CDMSE);
     proc_init_smscharge;
   end else
   begin
@@ -1693,14 +1693,14 @@ begin
   try
     if (GT_USERIF.LV = '10') and (not IsPassedManagementEtc(GT_SEL_BRNO.BrNo)) then
     begin
-      msg := '[%s(%s)]  Áö»ç¿¡¼­ Á¤»ê°ü·Ã °ü¸®±ÇÇÑ ÀÌ°ü(Äİ¼¾ÅÍ »ó´ã¿ø)À» ¼³Á¤ ÇÏÁö ¾Ê¾Ò½À´Ï´Ù.'
-          + #13#10'(ÇØ´ç Áö»ç°ü¸®ÀÚ¿¡°Ô °ü¸®±ÇÇÑ ÀÌ°ü[È¸»ç>Áö»ç°ü¸®>»ó¼¼¼³Á¤]À» ¿äÃ»¹Ù¶ø´Ï´Ù.)';
+      msg := '[%s(%s)]  ì§€ì‚¬ì—ì„œ ì •ì‚°ê´€ë ¨ ê´€ë¦¬ê¶Œí•œ ì´ê´€(ì½œì„¼í„° ìƒë‹´ì›)ì„ ì„¤ì • í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.'
+          + #13#10'(í•´ë‹¹ ì§€ì‚¬ê´€ë¦¬ìì—ê²Œ ê´€ë¦¬ê¶Œí•œ ì´ê´€[íšŒì‚¬>ì§€ì‚¬ê´€ë¦¬>ìƒì„¸ì„¤ì •]ì„ ìš”ì²­ë°”ëë‹ˆë‹¤.)';
 			GMessagebox(Format(msg, [GT_SEL_BRNO.BrNo, GT_SEL_BRNO.BrName]), CDMSE);
       proc_init_smscharge;
       Exit;
     end;
 
-    if fGetChk_Search_HdBrNo('SMSÄ³½¬ÃæÀü³»¿ªÁ¶È¸') then Exit;
+    if fGetChk_Search_HdBrNo('SMSìºì‰¬ì¶©ì „ë‚´ì—­ì¡°íšŒ') then Exit;
 
     ls_TxLoad := GTx_UnitXmlLoad('SEL01.XML');
     fGet_BlowFish_Query(GSQ_ACC_SMS_CASH, sQueryTemp);
@@ -1724,7 +1724,7 @@ begin
             if (not xdom.loadXML(ls_rxxml)) then
             begin
               Screen.Cursor := crDefault;
-              ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+              ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
               Exit;
             end;
             ls_Msg_Err := GetXmlErrorCode(ls_rxxml);
@@ -1733,7 +1733,7 @@ begin
               lst_Result := xdom.documentElement.selectNodes('/cdms/Service/Data/Result');
               ls_Rcrd := TStringList.Create;
               try
-                GetTextSeperationEx('¦¢', lst_Result.item[0].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                GetTextSeperationEx('â”‚', lst_Result.item[0].attributes.getNamedItem('Value').Text, ls_Rcrd);
                 iCash   := StrToFloatDef(ls_Rcrd[0], 0);
                 iValue1 := StrToFloatDef(ls_Rcrd[2], 0);
                 iValue2 := StrToFloatDef(ls_Rcrd[3], 0);
@@ -1741,8 +1741,8 @@ begin
                 iCnt2 := iCash / iValue2;
                 cxLblSMCashA9.Caption := FormatFloat('#,##0.#', StrToFloat(ls_Rcrd[0]));
                 cxLblBrCashA9.Caption := FormatFloat('#,##0.#', StrToFloat(ls_Rcrd[1]));
-                cxLblSMCnt1A9.Caption := ls_Rcrd[2] + ' ¿ø / °Ç´ç (ÀÏ¹İSMS¸¸ º¸³¾¶§ Àü¼Û°¡´É°Ç¼ö : ' + FormatFloat('#,##0', iCnt1) + ' °Ç)';
-                cxLblSMCnt2A9.Caption := ls_Rcrd[3] + ' ¿ø / °Ç´ç (±¤°íSMS¸¸ º¸³¾¶§ Àü¼Û°¡´É°Ç¼ö : ' + FormatFloat('#,##0', iCnt2) + ' °Ç)';
+                cxLblSMCnt1A9.Caption := ls_Rcrd[2] + ' ì› / ê±´ë‹¹ (ì¼ë°˜SMSë§Œ ë³´ë‚¼ë•Œ ì „ì†¡ê°€ëŠ¥ê±´ìˆ˜ : ' + FormatFloat('#,##0', iCnt1) + ' ê±´)';
+                cxLblSMCnt2A9.Caption := ls_Rcrd[3] + ' ì› / ê±´ë‹¹ (ê´‘ê³ SMSë§Œ ë³´ë‚¼ë•Œ ì „ì†¡ê°€ëŠ¥ê±´ìˆ˜ : ' + FormatFloat('#,##0', iCnt2) + ' ê±´)';
               finally
                 ls_Rcrd.Free;
               end;
@@ -1775,13 +1775,13 @@ procedure TFrm_ACC.btnSearchA10Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		Exit;
 	end;
 
   if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
   begin
-    GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+    GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
@@ -1793,7 +1793,7 @@ procedure TFrm_ACC.btnSearchA1Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
 	GridA1View.DataController.SetRecordCount(0);
@@ -1804,10 +1804,10 @@ procedure TFrm_ACC.btnSearchA2Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
-	//°Ë»ö¹öÆ° Å¬¸¯½Ã ...
+	//ê²€ìƒ‰ë²„íŠ¼ í´ë¦­ì‹œ ...
   GridA2View.DataController.SetRecordCount(0);
   proc_BankLog2('',1);
 end;
@@ -1816,15 +1816,15 @@ procedure TFrm_ACC.btnSearchA3Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
-	//°Ë»ö¹öÆ° Å¬¸¯½Ã ...
+	//ê²€ìƒ‰ë²„íŠ¼ í´ë¦­ì‹œ ...
   if ((GT_USERIF.LV = '60') or (GT_USERIF.LV = '10')) then
   begin
     if GT_SEL_BRNO.GUBUN <> '1' then
     begin
-      GMessagebox('Áö»ç¸¦ ¼±ÅÃÇÏ¼Å¾ß ÇÕ´Ï´Ù.', CDMSE);
+      GMessagebox('ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.', CDMSE);
     end else
     if GT_SEL_BRNO.GUBUN = '1' then
     begin
@@ -1842,10 +1842,10 @@ procedure TFrm_ACC.btnSearchA4Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
-	//°Ë»ö¹öÆ° Å¬¸¯½Ã ...
+	//ê²€ìƒ‰ë²„íŠ¼ í´ë¦­ì‹œ ...
   GridA4View.DataController.SetRecordCount(0);
 	proc_BrNoCharge;
 end;
@@ -1854,10 +1854,10 @@ procedure TFrm_ACC.btnSearchA5Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
-	//°Ë»ö¹öÆ° Å¬¸¯½Ã ...
+	//ê²€ìƒ‰ë²„íŠ¼ í´ë¦­ì‹œ ...
   GridA5View.DataController.SetRecordCount(0);
 	proc_WkCharge;
 end;
@@ -1866,10 +1866,10 @@ procedure TFrm_ACC.btnSearchA6Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
-	//°Ë»ö¹öÆ° Å¬¸¯½Ã ...
+	//ê²€ìƒ‰ë²„íŠ¼ í´ë¦­ì‹œ ...
 	GridA6View.DataController.SetRecordCount(0);
 	proc_WKSolution;
 end;
@@ -1878,10 +1878,10 @@ procedure TFrm_ACC.btnSearchA7Click(Sender: TObject);
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
-	//°Ë»ö¹öÆ° Å¬¸¯½Ã ...
+	//ê²€ìƒ‰ë²„íŠ¼ í´ë¦­ì‹œ ...
   GridA7View.DataController.SetRecordCount(0);
 	proc_ShareCallAcc;
 end;
@@ -1892,13 +1892,13 @@ var
 begin
 	if (GT_SEL_BRNO.GUBUN = '0') and (not Check_ALLHD(GT_SEL_BRNO.HDNO)) then
 	begin
-		GMessagebox('ÇØ´çº»»ç¿¡ ´ëÇÑ ÀüÃ¼ ±ÇÇÑÀÌ ¾ø½À´Ï´Ù.' + #13#10 + 'Áö»ç¸¦ ¼±ÅÃÇÏ¿© ÁÖ½Ê½Ã¿À.', CDMSE);
+		GMessagebox('í•´ë‹¹ë³¸ì‚¬ì— ëŒ€í•œ ì „ì²´ ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.' + #13#10 + 'ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì—¬ ì£¼ì‹­ì‹œì˜¤.', CDMSE);
 		exit;
 	end;
 	if (GT_USERIF.LV = '10') and (not IsPassedManagementEtc(GT_SEL_BRNO.BrNo)) then
   begin
-    msg := '[%s(%s)]  Áö»ç¿¡¼­ Á¤»ê°ü·Ã °ü¸®±ÇÇÑ ÀÌ°ü(Äİ¼¾ÅÍ »ó´ã¿ø)À» ¼³Á¤ ÇÏÁö ¾Ê¾Ò½À´Ï´Ù.'
-        + #13#10'(ÇØ´ç Áö»ç°ü¸®ÀÚ¿¡°Ô °ü¸®±ÇÇÑ ÀÌ°ü[È¸»ç>Áö»ç°ü¸®>»ó¼¼¼³Á¤]À» ¿äÃ»¹Ù¶ø´Ï´Ù.)';
+    msg := '[%s(%s)]  ì§€ì‚¬ì—ì„œ ì •ì‚°ê´€ë ¨ ê´€ë¦¬ê¶Œí•œ ì´ê´€(ì½œì„¼í„° ìƒë‹´ì›)ì„ ì„¤ì • í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.'
+        + #13#10'(í•´ë‹¹ ì§€ì‚¬ê´€ë¦¬ìì—ê²Œ ê´€ë¦¬ê¶Œí•œ ì´ê´€[íšŒì‚¬>ì§€ì‚¬ê´€ë¦¬>ìƒì„¸ì„¤ì •]ì„ ìš”ì²­ë°”ëë‹ˆë‹¤.)';
 		GMessagebox(Format(msg, [GT_SEL_BRNO.BrNo, GT_SEL_BRNO.BrName]), CDMSE);
     Exit;
 	end;
@@ -1916,7 +1916,7 @@ begin
 	if GridA9DBTableView.DataController.RecordCount > 0 then
     exit;
 
-  if fGetChk_Search_HdBrNo('SMSÄ³½¬ÃæÀü³»¿ª°Ë»ö') then Exit;
+  if fGetChk_Search_HdBrNo('SMSìºì‰¬ì¶©ì „ë‚´ì—­ê²€ìƒ‰') then Exit;
 
 	sWhere := ' AND BR_NO = ''' + GT_SEL_BRNO.BrNo + ''' ';
 
@@ -1969,13 +1969,13 @@ var
 begin
   if (GT_USERIF.LV = '10') and (not IsPassedManagementEtc(GT_SEL_BRNO.BrNo)) then
   begin
-    msg := '[%s(%s)]  Áö»ç¿¡¼­ Á¤»ê°ü·Ã °ü¸®±ÇÇÑ ÀÌ°ü(Äİ¼¾ÅÍ »ó´ã¿ø)À» ¼³Á¤ ÇÏÁö ¾Ê¾Ò½À´Ï´Ù.'
-        + #13#10'(ÇØ´ç Áö»ç°ü¸®ÀÚ¿¡°Ô °ü¸®±ÇÇÑ ÀÌ°ü[È¸»ç>Áö»ç°ü¸®>»ó¼¼¼³Á¤]À» ¿äÃ»¹Ù¶ø´Ï´Ù.)';
+    msg := '[%s(%s)]  ì§€ì‚¬ì—ì„œ ì •ì‚°ê´€ë ¨ ê´€ë¦¬ê¶Œí•œ ì´ê´€(ì½œì„¼í„° ìƒë‹´ì›)ì„ ì„¤ì • í•˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.'
+        + #13#10'(í•´ë‹¹ ì§€ì‚¬ê´€ë¦¬ìì—ê²Œ ê´€ë¦¬ê¶Œí•œ ì´ê´€[íšŒì‚¬>ì§€ì‚¬ê´€ë¦¬>ìƒì„¸ì„¤ì •]ì„ ìš”ì²­ë°”ëë‹ˆë‹¤.)';
     GMessagebox(Format(msg, [GT_SEL_BRNO.BrNo, GT_SEL_BRNO.BrName]), CDMSE);
     Exit;
   end;
 
-  if fGetChk_Search_HdBrNo('SMSÄ³½¬ÀÏ°ıÃæÀü³»¿ª°Ë»ö') then Exit;
+  if fGetChk_Search_HdBrNo('SMSìºì‰¬ì¼ê´„ì¶©ì „ë‚´ì—­ê²€ìƒ‰') then Exit;
 
   if ( GT_USERIF.Family = 'y' ) And ( GT_USERIF.LV = '60' ) And ( GT_USERIF.Master <> 'y' ) then     // 20120629 LYB
   begin
@@ -2047,7 +2047,7 @@ var
 begin
   if (cxcbCashMoveBrName2.ItemIndex = 0) and (TcxCheckBox(Sender).checked) then
   begin
-		GMessagebox('±âº» Ãâ±İÁö»ç ¼±ÅÃÀ» À§ÇØ Áö»ç¸¦ ¼±ÅÃÇÏ¼Å¾ß ÇÕ´Ï´Ù.', CDMSE);
+		GMessagebox('ê¸°ë³¸ ì¶œê¸ˆì§€ì‚¬ ì„ íƒì„ ìœ„í•´ ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.', CDMSE);
     TcxCheckBox(Sender).checked := False;
     edtCashMoveDefaultBranch.Clear;
     edtCashMoveDefaultBranch.Hint := '';
@@ -2147,7 +2147,7 @@ var
 begin
   if (cxcbCashMoveBrName1.ItemIndex = 0) or (cxcbCashMoveBrName2.ItemIndex = 0) then
   begin
-    GMessagebox('Áö»ç¸¦ ¼±ÅÃÇÏ¼Å¾ß ÇÕ´Ï´Ù.', CDMSE);
+    GMessagebox('ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì…”ì•¼ í•©ë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
@@ -2155,14 +2155,14 @@ begin
   begin
     if LeftStr(cxcbCashMoveBrName1.Text, Pos('(', cxcbCashMoveBrName1.Text) - 1) = LeftStr(cxcbCashMoveBrName2.Text, Pos('(', cxcbCashMoveBrName2.Text) - 1) then
     begin
-      GMessagebox('Ãâ±İÁö»ç¿Í ÀÔ±İÁö»ç°¡ µ¿ÀÏÇÕ´Ï´Ù.', CDMSE);
+      GMessagebox('ì¶œê¸ˆì§€ì‚¬ì™€ ì…ê¸ˆì§€ì‚¬ê°€ ë™ì¼í•©ë‹ˆë‹¤.', CDMSE);
       Exit;
     end;
   end else
   begin
     if cxcbCashMoveBrName1.ItemIndex = cxcbCashMoveBrName2.ItemIndex then
     begin
-      GMessagebox('Ãâ±İÁö»ç¿Í ÀÔ±İÁö»ç°¡ µ¿ÀÏÇÕ´Ï´Ù.', CDMSE);
+      GMessagebox('ì¶œê¸ˆì§€ì‚¬ì™€ ì…ê¸ˆì§€ì‚¬ê°€ ë™ì¼í•©ë‹ˆë‹¤.', CDMSE);
       Exit;
     end;
   end;
@@ -2176,15 +2176,15 @@ begin
 
 	if iCash2 <= 0 then
   begin
-		GMessagebox('0¿øº¸´Ù ÀûÀº °æ¿ì ÀÌµ¿µÇÁö ¾Ê½À´Ï´Ù.', CDMSE);
+		GMessagebox('0ì›ë³´ë‹¤ ì ì€ ê²½ìš° ì´ë™ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤.', CDMSE);
     cxEdtLMoveAmt.SetFocus;
     Exit;
   end;
 
   if iCash2 > iCash then
   begin
-    GMessagebox('ÀÌµ¿ÇÒ Ä³½¬°¡ Ãâ±İÇÒ Ä³½¬º¸´Ù Å©¸éÀº Ä³½¬ ÀÌµ¿À» ÇÒ ¼ö ¾ø½À´Ï´Ù.'+ #13#10
-      + 'Ãâ±İÇÒ Áö»ç¸¦ ´Ù½Ã¼±ÅÃÇÏ´ø°¡ ÀÌµ¿ÇÒ Ä³½¬¸¦ ÁÙÀÌ¼¼¿ä', CDMSE);
+    GMessagebox('ì´ë™í•  ìºì‰¬ê°€ ì¶œê¸ˆí•  ìºì‰¬ë³´ë‹¤ í¬ë©´ì€ ìºì‰¬ ì´ë™ì„ í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.'+ #13#10
+      + 'ì¶œê¸ˆí•  ì§€ì‚¬ë¥¼ ë‹¤ì‹œì„ íƒí•˜ë˜ê°€ ì´ë™í•  ìºì‰¬ë¥¼ ì¤„ì´ì„¸ìš”', CDMSE);
     Exit;
   end;
   proc_CashMove(0);
@@ -2198,7 +2198,7 @@ var
 begin
 	if cxcbCashMoveBrName4.ItemIndex = 0 then
   begin
-    GMessagebox('Áö»ç¸¦ ¼±ÅÃÇÏ¼Å¾ß ÇÕ´Ï´Ù', CDMSE);
+    GMessagebox('ì§€ì‚¬ë¥¼ ì„ íƒí•˜ì…”ì•¼ í•©ë‹ˆë‹¤', CDMSE);
     exit;
   end;
 
@@ -2214,15 +2214,15 @@ begin
 
   if iCnt = 0 then
   begin
-    if rbCashOut.Checked then GMessagebox('ÀÔ±İÇÒ Áö»ç°¡ ¾ø½À´Ï´Ù.', CDMSE) else
-    if rbCashIn .Checked then GMessagebox('Ãâ±İÇÒ Áö»ç°¡ ¾ø½À´Ï´Ù.', CDMSE) else
+    if rbCashOut.Checked then GMessagebox('ì…ê¸ˆí•  ì§€ì‚¬ê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE) else
+    if rbCashIn .Checked then GMessagebox('ì¶œê¸ˆí•  ì§€ì‚¬ê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE) else
     Exit;
   end;
 
   if (cxRBCashM.Checked) and
 	  	(StrToIntDef(StringReplace(cxEdtRMoveAmt.Text, ',', '', [rfReplaceAll]), 0) <= 0) then
   begin
-		GMessagebox('0¿øº¸´Ù ÀûÀº Ä³½¬ ÀÌµ¿ÇÒ¼ö ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('0ì›ë³´ë‹¤ ì ì€ ìºì‰¬ ì´ë™í• ìˆ˜ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
@@ -2235,8 +2235,8 @@ begin
       begin
         if StrToIntDef(cxBrCashMove.DataController.Values[i, 2], 0) < cxEdtRMoveAmt.Value then
         begin
-          sMsg := '¼±ÅÃÇÏ½Å Áö»ç[' + cxBrCashMove.DataController.Values[i, 1] + '] Áö»çÄ³½¬ ±İ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.' + #13#10 +
-                  '±İ¾× È®ÀÎ ¹Ù¶ø´Ï´Ù';
+          sMsg := 'ì„ íƒí•˜ì‹  ì§€ì‚¬[' + cxBrCashMove.DataController.Values[i, 1] + '] ì§€ì‚¬ìºì‰¬ ê¸ˆì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.' + #13#10 +
+                  'ê¸ˆì•¡ í™•ì¸ ë°”ëë‹ˆë‹¤';
           GMessagebox(sMsg, CDMSE);
           cxBrCashMove.DataController.FocusedRecordIndex := i;
           bOk := False;
@@ -2314,13 +2314,13 @@ begin
       sWhere := format('WHERE HD_NO = ''%s'' AND USE_YN = ''y'' ORDER BY ' +
                        ' ( SELECT HD_LIST FROM CDMS_HEAD WHERE HD_NO = B.HD_NO ), HD_NO, (CASE WHEN HD_NO = ''A922'' THEN CASE WHEN BR_LIST IS NULL THEN 998 ELSE BR_LIST END ELSE BR_LIST END), BR_NO, IN_DATE', [sHdNo]);
     end else
-		if ( GT_USERIF.LV = '60' ) then     // ÆĞ¹Ğ¸® ¾Æ´Ñ º»»ç°ü¸®ÀÚ´Â ÀÚ½ÅÀÇ Áö»ç ÀüÃ¼ Á¶È¸ 20210902 KHS
+		if ( GT_USERIF.LV = '60' ) then     // íŒ¨ë°€ë¦¬ ì•„ë‹Œ ë³¸ì‚¬ê´€ë¦¬ìëŠ” ìì‹ ì˜ ì§€ì‚¬ ì „ì²´ ì¡°íšŒ 20210902 KHS
 		begin
 			sHdNo := GT_USERIF.HD;
 			sWhere := format('WHERE HD_NO = ''%s'' AND USE_YN = ''y'' ORDER BY ' +
 											 ' ( SELECT HD_LIST FROM CDMS_HEAD WHERE HD_NO = B.HD_NO ), HD_NO, (CASE WHEN HD_NO = ''A922'' THEN CASE WHEN BR_LIST IS NULL THEN 998 ELSE BR_LIST END ELSE BR_LIST END), BR_NO, IN_DATE', [sHdNo]);
 		end else
-		if ( GT_USERIF.LV = '40' ) then     // Áö»ç°ü¸®ÀÚ´Â ÀÚ½ÅÀÇ Áö»ç¸¸ Á¶È¸ 20210902 KHS
+		if ( GT_USERIF.LV = '40' ) then     // ì§€ì‚¬ê´€ë¦¬ìëŠ” ìì‹ ì˜ ì§€ì‚¬ë§Œ ì¡°íšŒ 20210902 KHS
 		begin
 			sHdNo := GT_USERIF.HD;
 			sWhere := format('WHERE HD_NO = ''%s'' AND BR_NO = ''%s'' AND USE_YN = ''y'' ORDER BY ' +
@@ -2351,7 +2351,7 @@ begin
             if (not xdom.loadXML(ls_rxxml)) then
             begin
               Screen.Cursor := crDefault;
-              ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+              ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
               Exit;
             end;
             ls_Msg_Err := GetXmlErrorCode(ls_rxxml);
@@ -2365,7 +2365,7 @@ begin
                   GridA10DBTableView.BeginUpdate();
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
 
                     iRow := GridA10DBTableView.DataController.AppendRecord;
                     GridA10DBTableView.DataController.Values[iRow, 0] := iRow + 1;
@@ -2488,7 +2488,7 @@ begin
       asParam[1] := IntToStr(2);
 
     if ( GT_USERIF.Family = 'y' ) And ( GT_USERIF.LV = '60' ) then     // 20120629 LYB
-      asParam[2] := scb_HdNo[cxcbCashMoveHdName1.ItemIndex]   // ÀÔ±İº»»çÄÚµå
+      asParam[2] := scb_HdNo[cxcbCashMoveHdName1.ItemIndex]   // ì…ê¸ˆë³¸ì‚¬ì½”ë“œ
     else
       asParam[2] := GT_USERIF.HD;
 
@@ -2584,8 +2584,8 @@ begin
               ls_Rcrd := TStringList.Create;
               try
                 GetTextSeperationEx('|', sMsg, ls_Rcrd);
-                sMsg := '¼º°ø°Ç¼ö : ' + ls_Rcrd[0] + ' °³' + #13#10
-                      + 'Ãâ±İ±İ¾× : ' + FormatFloat('#,##0', StrToFloatDef(ls_Rcrd[1], 0.0)) + ' ¿ø';
+                sMsg := 'ì„±ê³µê±´ìˆ˜ : ' + ls_Rcrd[0] + ' ê°œ' + #13#10
+                      + 'ì¶œê¸ˆê¸ˆì•¡ : ' + FormatFloat('#,##0', StrToFloatDef(ls_Rcrd[1], 0.0)) + ' ì›';
                 cxEdtRMoveAmt.Value := 0;
                 edtCashMoveMultiMemo.Clear;
               finally
@@ -2598,7 +2598,7 @@ begin
           end else
             GMessagebox(MSG012 + CRLF + ls_MSG_Err, CDMSE);
         except
-					GMessagebox('½ÇÆĞÇÏ¿´½À´Ï´Ù.' + #13#10 + '´Ù½Ã ÇÑ¹ø ½ÃµµÇØ º¸¼¼¿ä', CDMSE);
+					GMessagebox('ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.' + #13#10 + 'ë‹¤ì‹œ í•œë²ˆ ì‹œë„í•´ ë³´ì„¸ìš”', CDMSE);
         end;
       end;
     end;
@@ -2643,21 +2643,21 @@ begin
       sParam := '';
       ls_TxLoad := GTx_UnitXmlLoad('CALLABLE2.xml');
 
-      asParam[1] := IntToStr(1);    // Áö»çÄ³½¬
+      asParam[1] := IntToStr(1);    // ì§€ì‚¬ìºì‰¬
 
-      // ÀÔ±İº»»çÄÚµå
+      // ì…ê¸ˆë³¸ì‚¬ì½”ë“œ
       if ( GT_USERIF.Family = 'y' ) And ( GT_USERIF.LV = '60' ) then
         asParam[2] := scb_HdNo[cxcbCashMoveHdName4.ItemIndex]
       else
         asParam[2] := GT_USERIF.HD;
 
-      // ÀÔ±İÁö»çÄÚµå
+      // ì…ê¸ˆì§€ì‚¬ì½”ë“œ
       if ( GT_USERIF.Family = 'y' ) And ( GT_USERIF.LV = '60' ) then     // 20120629 LYB
         asParam[3] := LeftStr(cxcbCashMoveBrName4.Text, Pos('(', cxcbCashMoveBrName4.Text) - 1)
       else
         asParam[3] := scb_BranchCode[cxcbCashMoveBrName4.itemIndex - 1];
 
-      // Ãâ±İÁö»çÄÚµå
+      // ì¶œê¸ˆì§€ì‚¬ì½”ë“œ
       asParam[4] := lsMoveBrList[il];
 
       asParam[5] := StringReplace(cxEdtRMoveAmt.Text, ',', '', [rfReplaceAll]);
@@ -2706,8 +2706,8 @@ begin
                   iSAmt := iSAmt + cxEdtRMoveAmt.Value;
                 end;
 
-                sMsg := '¼º°ø°Ç¼ö : ' + IntToStr(ilSucc) + ' °³' + #13#10
-                      + 'ÀÔ±İ±İ¾× : ' + FormatFloat('#,##0', iSAmt) + ' ¿ø';
+                sMsg := 'ì„±ê³µê±´ìˆ˜ : ' + IntToStr(ilSucc) + ' ê°œ' + #13#10
+                      + 'ì…ê¸ˆê¸ˆì•¡ : ' + FormatFloat('#,##0', iSAmt) + ' ì›';
 
                 GMessagebox(sMsg, CDMSI);
                 cxEdtRMoveAmt.Value := 0;
@@ -2715,7 +2715,7 @@ begin
                 cxcbCashMoveBrName4Click(cxcbCashMoveBrName4);
               end;
             except
-              GMessagebox('½ÇÆĞÇÏ¿´½À´Ï´Ù.' + #13#10 + '´Ù½Ã ÇÑ¹ø ½ÃµµÇØ º¸¼¼¿ä', CDMSE);
+              GMessagebox('ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.' + #13#10 + 'ë‹¤ì‹œ í•œë²ˆ ì‹œë„í•´ ë³´ì„¸ìš”', CDMSE);
               Break;
             end;
             Sleep(10);
@@ -2742,7 +2742,7 @@ begin
 		ln_envfile := TIniFile.Create(ENVPATHFILE);
 		try
 			ln_envfile.EraseSection('GridA7_Title');
-			//±×¸®µå Å¸ÀÌÆ², »çÀÌÁî ÀúÀå
+			//ê·¸ë¦¬ë“œ íƒ€ì´í‹€, ì‚¬ì´ì¦ˆ ì €ì¥
 
 			iShow := 0;
 			iHide := 0;
@@ -2918,7 +2918,7 @@ begin
             if (not xdom.loadXML(ls_rxxml)) then
             begin
               Screen.Cursor := crDefault;
-              ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+              ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
               Exit;
             end;
             ls_Msg_Err := GetXmlErrorCode(ls_rxxml);
@@ -2931,7 +2931,7 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
 
                     if iType = 1 then
                     begin
@@ -3020,7 +3020,7 @@ begin
             if (not xdom.loadXML(ls_rxxml)) then
             begin
               Screen.Cursor := crDefault;
-              ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+              ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
               Exit;
             end;
             ls_Msg_Err := GetXmlErrorCode(ls_rxxml);
@@ -3029,7 +3029,7 @@ begin
               lst_Result := xdom.documentElement.selectNodes('/cdms/Service/Data/Result');
 							ls_Rcrd := TStringList.Create;
               try
-                GetTextSeperationEx('¦¢', lst_Result.item[0].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                GetTextSeperationEx('â”‚', lst_Result.item[0].attributes.getNamedItem('Value').Text, ls_Rcrd);
                 if iType = 0 then
                 begin
                   cxLblIBrCash.Caption := FormatFloat('#,##0', StrToFloat(ls_Rcrd[2]));
@@ -3242,7 +3242,7 @@ procedure TFrm_ACC.edtCashMoveBrName1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
 	SetDebugeWrite('TFrm_ACC.edtCashMoveBrName1KeyUp');
-//		if (key <> 229) then  //  20191224 ÇÑÄÄÀÔ·Â±â ¿¡¼­´Â ¸ğµç ÇÑ±ÛÀÌ 229·Î ³Ñ¾î¿È ±×·¡¼­ »èÁ¦ KHS
+//		if (key <> 229) then  //  20191224 í•œì»´ì…ë ¥ê¸° ì—ì„œëŠ” ëª¨ë“  í•œê¸€ì´ 229ë¡œ ë„˜ì–´ì˜´ ê·¸ë˜ì„œ ì‚­ì œ KHS
 	begin
 		if Trim(edtCashMoveBrName1.Text) = '' then
 		begin
@@ -3276,7 +3276,7 @@ end;
 procedure TFrm_ACC.edtCashMoveBrName1PropertiesChange(Sender: TObject);
 begin
 	if ( Not edtCashMoveBrName1.Focused ) then
-		lbSearchBranch1.Visible := (edtCashMoveBrName1.Text = ''); //  ÀÔ·Â ÀÜ»ó.
+		lbSearchBranch1.Visible := (edtCashMoveBrName1.Text = ''); //  ì…ë ¥ ì”ìƒ.
 end;
 
 procedure TFrm_ACC.edtCashMoveBrName2Enter(Sender: TObject);
@@ -3325,7 +3325,7 @@ procedure TFrm_ACC.edtCashMoveBrName2KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
 	SetDebugeWrite('TFrm_ACC.edtCashMoveBrName2KeyUp');
-//		if (key <> 229) then  //  20191224 ÇÑÄÄÀÔ·Â±â ¿¡¼­´Â ¸ğµç ÇÑ±ÛÀÌ 229·Î ³Ñ¾î¿È ±×·¡¼­ »èÁ¦ KHS
+//		if (key <> 229) then  //  20191224 í•œì»´ì…ë ¥ê¸° ì—ì„œëŠ” ëª¨ë“  í•œê¸€ì´ 229ë¡œ ë„˜ì–´ì˜´ ê·¸ë˜ì„œ ì‚­ì œ KHS
 	begin
 		if Trim(edtCashMoveBrName2.Text) = '' then
 		begin
@@ -3402,7 +3402,7 @@ procedure TFrm_ACC.edtCashMoveBrName3KeyUp(Sender: TObject; var Key: Word;
 	Shift: TShiftState);
 begin
 	SetDebugeWrite('TFrm_ACC.edtCashMoveBrName2KeyUp');
-//		if (key <> 229) then  //  20191224 ÇÑÄÄÀÔ·Â±â ¿¡¼­´Â ¸ğµç ÇÑ±ÛÀÌ 229·Î ³Ñ¾î¿È ±×·¡¼­ »èÁ¦ KHS
+//		if (key <> 229) then  //  20191224 í•œì»´ì…ë ¥ê¸° ì—ì„œëŠ” ëª¨ë“  í•œê¸€ì´ 229ë¡œ ë„˜ì–´ì˜´ ê·¸ë˜ì„œ ì‚­ì œ KHS
 	begin
 		if Trim(edtCashMoveBrName3.Text) = '' then
 		begin
@@ -3454,11 +3454,11 @@ begin
 
   if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
   begin
-    GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+    GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
-	if fGetChk_Search_HdBrNo('ÅëÀå½Ä·Î±×') then Exit;
+	if fGetChk_Search_HdBrNo('í†µì¥ì‹ë¡œê·¸') then Exit;
 
   if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then
   begin
@@ -3484,7 +3484,7 @@ begin
     if (not xdom.loadXML(ls_rxxml)) then
     begin
       Screen.Cursor := crDefault;
-      ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+      ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
       Exit;
     end;
 
@@ -3501,9 +3501,9 @@ begin
     sNode := '/cdms/Service/Data/Query';
     lst_Node := xdom.documentElement.selectNodes(sNode);
     if iType = 1 then
-      lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS07' //º»»ç
+      lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS07' //ë³¸ì‚¬
     else
-      lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS03'; //Áö»ç
+      lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS03'; //ì§€ì‚¬
 
     if (cxDtStartA2.Text = '') or (cxDtEndA2.Text = '') then
     begin
@@ -3513,7 +3513,7 @@ begin
     startDate := FormatDateTime('YYYYMMDD', cxDtStartA2.Date) + FormatDateTime('HHNNSS', cxTeStartA2.Time);
     endDate   := FormatDateTime('YYYYMMDD', cxDtEndA2.Date) + FormatDateTime('HHNNSS', cxTeEndA2.Time);
 
-    //³ëµå¸¦ º¹»çÇØ¼­ paramÀ» »ı¼ºÇÑ´Ù....
+    //ë…¸ë“œë¥¼ ë³µì‚¬í•´ì„œ paramì„ ìƒì„±í•œë‹¤....
     sNode := '/cdms/Service/Data/Query/Param';
     lst_Node := xdom.documentElement.selectNodes(sNode);
     lst_clon := lst_node.item[0].cloneNode(True);
@@ -3584,11 +3584,11 @@ begin
 
     if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
     begin
-      GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+      GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
       Exit;
     end;
 
-    if fGetChk_Search_HdBrNo('¿À´õÁ¤»ê') then Exit;
+    if fGetChk_Search_HdBrNo('ì˜¤ë”ì •ì‚°') then Exit;
 
     if (GT_USERIF.LV = '60') then
       sBrNo := GT_SEL_BRNO.BrNo
@@ -3596,8 +3596,8 @@ begin
       sBrNo := GT_USERIF.BR;
 
     Param := sBrNo;
-    Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtStartA3.Date)+FormatDateTime('HHNNSS', cxTeStartA3.Time);
-    Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtEndA3.Date  )+FormatDateTime('HHNNSS', cxTeEndA3.Time);
+    Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtStartA3.Date)+FormatDateTime('HHNNSS', cxTeStartA3.Time);
+    Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtEndA3.Date  )+FormatDateTime('HHNNSS', cxTeEndA3.Time);
 
     btnSearchA3.Enabled := False;
     Screen.Cursor := crHourGlass;
@@ -3605,7 +3605,7 @@ begin
       slList := TStringList.Create;
       if not RequestBasePaging(GetSel06('BRCASH04', 'MNG_BR_CASH.BRCASH04', '1000', Param), slList, ErrCode, ErrMsg, 600000) then
       begin
-        GMessagebox(Format('¿À´õÁ¤»ê Á¶È¸ Áß ¿À·ù¹ß»ı'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSI);
+        GMessagebox(Format('ì˜¤ë”ì •ì‚° ì¡°íšŒ ì¤‘ ì˜¤ë¥˜ë°œìƒ'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSI);
         Screen.Cursor := crDefault;
         btnSearchA3.Enabled := True;
         Exit;
@@ -3636,28 +3636,28 @@ begin
             try
               for i := 0 to lst_Result.length - 1 do
               begin
-                GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
                 ls_Rcrd.Insert(13, '');
                 if not Check_ID(GT_USERIF.ID, ls_Rcrd[0]) then
                 begin
                   iRow := GridA3View.DataController.AppendRecord;
-                  // 1 Record Ãß°¡
+                  // 1 Record ì¶”ê°€
                   GridA3View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                   sTmp := GetStrToDateTimeGStr(ls_Rcrd[0], 4);
                   GridA3View.DataController.Values[iRow,  1] := sTmp;
-                  GridA3View.DataController.Values[iRow,  2] := ls_Rcrd[1];                     //¹ßÁÖº»»ç
-                  GridA3View.DataController.Values[iRow,  3] := ls_Rcrd[2];                     //¹ßÁÖÁö»ç
-                  GridA3View.DataController.Values[iRow,  4] := ls_Rcrd[3];                     //¼öÁÖº»»ç
-                  GridA3View.DataController.Values[iRow,  5] := ls_Rcrd[4];                     //¼öÁÖÁö»ç
-                  GridA3View.DataController.Values[iRow,  6] := ls_Rcrd[5];                     //°øÀ¯±¸ºĞ
-                  GridA3View.DataController.Values[iRow,  7] := ls_Rcrd[6];                     //´ëÇ¥¹øÈ£
-                  GridA3View.DataController.Values[iRow,  8] := ls_Rcrd[7];                     //Ãâ¹ßÁö
-                  GridA3View.DataController.Values[iRow,  9] := ls_Rcrd[8];                     //µµÂøÁö
-                  GridA3View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[ 9], 0);    //ÀÌ¿ë±İ¾×
-                  GridA3View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[10], 0);    //±â»ç¼ö¼ö·á
-                  GridA3View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[19], 0);    //°í¿ëº¸Çè·á
-                  GridA3View.DataController.Values[iRow, 13] := StrToIntDef(ls_Rcrd[11], 0); //¼ö¼ö·á(°ø¿ëÄ³½¬)
-                  // Á¤»êºñÀ² °è»ê
+                  GridA3View.DataController.Values[iRow,  2] := ls_Rcrd[1];                     //ë°œì£¼ë³¸ì‚¬
+                  GridA3View.DataController.Values[iRow,  3] := ls_Rcrd[2];                     //ë°œì£¼ì§€ì‚¬
+                  GridA3View.DataController.Values[iRow,  4] := ls_Rcrd[3];                     //ìˆ˜ì£¼ë³¸ì‚¬
+                  GridA3View.DataController.Values[iRow,  5] := ls_Rcrd[4];                     //ìˆ˜ì£¼ì§€ì‚¬
+                  GridA3View.DataController.Values[iRow,  6] := ls_Rcrd[5];                     //ê³µìœ êµ¬ë¶„
+                  GridA3View.DataController.Values[iRow,  7] := ls_Rcrd[6];                     //ëŒ€í‘œë²ˆí˜¸
+                  GridA3View.DataController.Values[iRow,  8] := ls_Rcrd[7];                     //ì¶œë°œì§€
+                  GridA3View.DataController.Values[iRow,  9] := ls_Rcrd[8];                     //ë„ì°©ì§€
+                  GridA3View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[ 9], 0);    //ì´ìš©ê¸ˆì•¡
+                  GridA3View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[10], 0);    //ê¸°ì‚¬ìˆ˜ìˆ˜ë£Œ
+                  GridA3View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[19], 0);    //ê³ ìš©ë³´í—˜ë£Œ
+                  GridA3View.DataController.Values[iRow, 13] := StrToIntDef(ls_Rcrd[11], 0); //ìˆ˜ìˆ˜ë£Œ(ê³µìš©ìºì‰¬)
+                  // ì •ì‚°ë¹„ìœ¨ ê³„ì‚°
                   iCharge := StrToIntDef(ls_Rcrd[9], 0);
                   iBalju := Abs(StrToIntDef(ls_Rcrd[12], 0));
                   iCom := StrToIntDef(ls_Rcrd[10], 0);
@@ -3675,19 +3675,19 @@ begin
                   iComCash := StrToIntDef(ls_Rcrd[11], 0);
                   iComCyCash := iCom - iComCash;
                   iCash := iCom + StrToIntDef(ls_Rcrd[12], 0);
-                  GridA3View.DataController.Values[iRow, 14] := IntToStr(iComCyCash); //¼ö¼ö·á(ÀÚÃ¼Ä³½¬)
-                  GridA3View.DataController.Values[iRow, 15] := StrToIntDef(ls_Rcrd[12], 0); //Á¤»ê±İ¾×
-                  GridA3View.DataController.Values[iRow, 16] := IntToStr(iCash);      //¼öÀÍ±İ
+                  GridA3View.DataController.Values[iRow, 14] := IntToStr(iComCyCash); //ìˆ˜ìˆ˜ë£Œ(ìì²´ìºì‰¬)
+                  GridA3View.DataController.Values[iRow, 15] := StrToIntDef(ls_Rcrd[12], 0); //ì •ì‚°ê¸ˆì•¡
+                  GridA3View.DataController.Values[iRow, 16] := IntToStr(iCash);      //ìˆ˜ìµê¸ˆ
                   if iBalju = 0 then
-                    GridA3View.DataController.Values[iRow, 17] := ''                  //Á¤»êºñÀ²
+                    GridA3View.DataController.Values[iRow, 17] := ''                  //ì •ì‚°ë¹„ìœ¨
                   else
-                    GridA3View.DataController.Values[iRow, 17] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); //Á¤»êºñÀ²
-                  GridA3View.DataController.Values[iRow, 18] := ls_Rcrd[14]; //¿îÇà±â»ç¸í
-                  GridA3View.DataController.Values[iRow, 19] := ls_Rcrd[15]; //±â»ç»ç¹ø
-                  GridA3View.DataController.Values[iRow, 20] := ls_Rcrd[16]; //Á¢¼ö¹øÈ£
-                  GridA3View.DataController.Values[iRow, 21] := ls_Rcrd[17]; //°øÀ¯Â÷¼ö
+                    GridA3View.DataController.Values[iRow, 17] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); //ì •ì‚°ë¹„ìœ¨
+                  GridA3View.DataController.Values[iRow, 18] := ls_Rcrd[14]; //ìš´í–‰ê¸°ì‚¬ëª…
+                  GridA3View.DataController.Values[iRow, 19] := ls_Rcrd[15]; //ê¸°ì‚¬ì‚¬ë²ˆ
+                  GridA3View.DataController.Values[iRow, 20] := ls_Rcrd[16]; //ì ‘ìˆ˜ë²ˆí˜¸
+                  GridA3View.DataController.Values[iRow, 21] := ls_Rcrd[17]; //ê³µìœ ì°¨ìˆ˜
 
-                  GridA3View.DataController.Values[iRow, 22] := ls_Rcrd[18]; //¹èÂ÷Çü½Ä
+                  GridA3View.DataController.Values[iRow, 22] := ls_Rcrd[18]; //ë°°ì°¨í˜•ì‹
                 end;
               end;
             finally
@@ -3695,7 +3695,7 @@ begin
             end;
           end	else
           begin
-            GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+            GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
           end;
         end;
       finally
@@ -3732,11 +3732,11 @@ begin
 
   if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
   begin
-    GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+    GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
-  if fGetChk_Search_HdBrNo('Áö»çÃæÀü³»¿ª') then Exit;
+  if fGetChk_Search_HdBrNo('ì§€ì‚¬ì¶©ì „ë‚´ì—­') then Exit;
 
   if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then
   begin
@@ -3762,7 +3762,7 @@ begin
     if (not xdom.loadXML(ls_rxxml)) then
     begin
       Screen.Cursor := crDefault;
-      ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+      ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
       Exit;
     end;
 
@@ -3785,11 +3785,11 @@ begin
     if iType = 1 then
     begin
 			if not Check_ID(GT_USERIF.ID, GT_SEL_BRNO.BrNo) then
-				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS06' //º»»ç
+				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS06' //ë³¸ì‚¬
 			else
-				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS06_8282SN'; //º»»ç
+				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS06_8282SN'; //ë³¸ì‚¬
     end else
-			lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS05'; //Áö»ç
+			lst_Node.item[0].attributes.getNamedItem('Key').Text := 'BRCASHS05'; //ì§€ì‚¬
 
     lst_Node.item[0].attributes.getNamedItem('Backward').Text := sWhere;
 
@@ -3801,7 +3801,7 @@ begin
     startDate := FormatDateTime('YYYYMMDD', cxDtStartA4.Date ) + FormatDateTime('HHNNSS', cxTeStartA4.Time);
     endDate   := FormatDateTime('YYYYMMDD', cxDtEndA4.Date) + FormatDateTime('HHNNSS', cxTeEndA4.Time);
 
-    //³ëµå¸¦ º¹»çÇØ¼­ paramÀ» »ı¼ºÇÑ´Ù....
+    //ë…¸ë“œë¥¼ ë³µì‚¬í•´ì„œ paramì„ ìƒì„±í•œë‹¤....
     sNode := '/cdms/Service/Data/Query/Param';
 		lst_Node := xdom.documentElement.selectNodes(sNode);
     lst_clon := lst_node.item[0].cloneNode(True);
@@ -3871,11 +3871,11 @@ begin
 
 	if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
 	begin
-		GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
 		Exit;
 	end;
 
-  if fGetChk_Search_HdBrNo('±â»çÃæÀü³»¿ª') then Exit;
+  if fGetChk_Search_HdBrNo('ê¸°ì‚¬ì¶©ì „ë‚´ì—­') then Exit;
 
 	if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then
 	begin
@@ -3920,10 +3920,10 @@ begin
 				ABrNo := GT_USERIF.BR;
 			end;
 			Param := '';
-			Param := AHdNo + '¦¢' + ABrNo + '¦¢' + 'A' + '¦¢' + Param_Filtering(cxSEdtA5.Text);
+			Param := AHdNo + 'â”‚' + ABrNo + 'â”‚' + 'A' + 'â”‚' + Param_Filtering(cxSEdtA5.Text);
 			if not RequestBase(GetSel05('GET_ID_FROM_NAME', 'COM_UTIL.GET_ID_FROM_NAME', '100', Param), XmlData, ErrCode, ErrMsg) then
 			begin
-				GMessagebox(Format('ÀÔ±İÀÚ ·Îµå Áß ¿À·ù¹ß»ı'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSE);
+				GMessagebox(Format('ì…ê¸ˆì ë¡œë“œ ì¤‘ ì˜¤ë¥˜ë°œìƒ'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSE);
 				Exit;
 			end;
 
@@ -3935,7 +3935,7 @@ begin
 			try
 				if lst_Result.length = 1 then
 				begin
-					GetTextSeperationEx('¦¢', lst_Result.item[0].attributes.getNamedItem('Value').Text, ls_Rcrd);
+					GetTextSeperationEx('â”‚', lst_Result.item[0].attributes.getNamedItem('Value').Text, ls_Rcrd);
           if ls_Rcrd.Count >= 4 then
   					sWhere := ' AND C.IN_ID = ''' + ls_Rcrd[3] + '''  '
           else
@@ -3948,7 +3948,7 @@ begin
 					begin
 						if lst_Result.item[i].attributes.getNamedItem('Value').Text = '' then
 							Continue;
-						GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+						GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
             if ls_Rcrd.Count >= 4 then
             begin
               if i = 0 then
@@ -3991,7 +3991,7 @@ begin
     if (not xdom.loadXML(ls_rxxml)) then
     begin
       Screen.Cursor := crDefault;
-      ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+      ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
       Exit;
     end;
 
@@ -4010,11 +4010,11 @@ begin
 	  if iType = 1 then
     begin
       if not Check_ID(GT_USERIF.ID, GT_SEL_BRNO.BrNo) then
-	  		lst_Node.item[0].attributes.getNamedItem('Key').Text := 'WKCASHS03' //º»»ç
+	  		lst_Node.item[0].attributes.getNamedItem('Key').Text := 'WKCASHS03' //ë³¸ì‚¬
 	  	else
-	  		lst_Node.item[0].attributes.getNamedItem('Key').Text := 'WKCASHS03_8282SN'; //º»»ç
+	  		lst_Node.item[0].attributes.getNamedItem('Key').Text := 'WKCASHS03_8282SN'; //ë³¸ì‚¬
     end else
-	  	lst_Node.item[0].attributes.getNamedItem('Key').Text := 'WKCASHS02'; //Áö»ç
+	  	lst_Node.item[0].attributes.getNamedItem('Key').Text := 'WKCASHS02'; //ì§€ì‚¬
 
     lst_Node.item[0].attributes.getNamedItem('Backward').Text := sWhere;
 
@@ -4026,7 +4026,7 @@ begin
     startDate := FormatDateTime('YYYYMMDD', cxDtStartA5.Date) + FormatDateTime('HHNNSS', cxTeStartA5.Time);
     endDate   := FormatDateTime('YYYYMMDD', cxDtEndA5.Date) + FormatDateTime('HHNNSS', cxTeEndA5.Time);
 
-    //³ëµå¸¦ º¹»çÇØ¼­ paramÀ» »ı¼ºÇÑ´Ù....
+    //ë…¸ë“œë¥¼ ë³µì‚¬í•´ì„œ paramì„ ìƒì„±í•œë‹¤....
     sNode := '/cdms/Service/Data/Query/Param';
     lst_Node := xdom.documentElement.selectNodes(sNode);
     lst_clon := lst_node.item[0].cloneNode(True);
@@ -4090,11 +4090,11 @@ begin
 
   if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
   begin
-    GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+    GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
-  if fGetChk_Search_HdBrNo('±â»ç»ç¿ë·á') then Exit;
+  if fGetChk_Search_HdBrNo('ê¸°ì‚¬ì‚¬ìš©ë£Œ') then Exit;
 
   if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then
   begin
@@ -4120,7 +4120,7 @@ begin
     if (not xdom.loadXML(ls_rxxml)) then
     begin
       Screen.Cursor := crDefault;
-      ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+      ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
       Exit;
     end;
 
@@ -4137,17 +4137,17 @@ begin
     sNode := '/cdms/Service/Data/Query';
     lst_Node := xdom.documentElement.selectNodes(sNode);
     if iType = 1 then
-			lst_Node.item[0].attributes.getNamedItem('Key').Text := 'PROGRAMS02' //º»»ç
+			lst_Node.item[0].attributes.getNamedItem('Key').Text := 'PROGRAMS02' //ë³¸ì‚¬
     else
 			lst_Node.item[0].attributes.getNamedItem('Key').Text := 'PROGRAMS01';
-    //Áö»ç
+    //ì§€ì‚¬
 
     if cxSEYYA6.Text = '' then
       cxSEYYA6.Text := FormatDateTime('yyyy', Now);
     if cxSEMMA6.Text = '' then
       cxSEMMA6.Text := Copy(FormatDateTime('yyyymm', Now), 5, 2);
     startDate := cxSEYYA6.Text + LPAD(cxSEMMA6.Text, '0', 2);
-    //³ëµå¸¦ º¹»çÇØ¼­ paramÀ» »ı¼ºÇÑ´Ù....
+    //ë…¸ë“œë¥¼ ë³µì‚¬í•´ì„œ paramì„ ìƒì„±í•œë‹¤....
     sNode := '/cdms/Service/Data/Query/Param';
     lst_Node := xdom.documentElement.selectNodes(sNode);
     lst_clon := lst_node.item[0].cloneNode(True);
@@ -4202,7 +4202,7 @@ begin
     if (not xdom.loadXML(ls_rxxml)) then
     begin
       Screen.Cursor := crDefault;
-      ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+      ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
       Exit;
     end;
 
@@ -4218,7 +4218,7 @@ begin
     lst_Node.item[0].attributes.getNamedItem('Value').Text := 'ACC021';
     sNode := '/cdms/Service/Data/Query';
     lst_Node := xdom.documentElement.selectNodes(sNode);
-    lst_Node.item[0].attributes.getNamedItem('Key').Text := 'PROGRAMS03'; //Áö»ç
+    lst_Node.item[0].attributes.getNamedItem('Key').Text := 'PROGRAMS03'; //ì§€ì‚¬
 
     if cxSEYYA6.Text = '' then
       cxSEYYA6.Text := FormatDateTime('yyyy', Now);
@@ -4226,7 +4226,7 @@ begin
       cxSEMMA6.Text := Copy(FormatDateTime('yyyymm', Now), 5, 2);
 
     startDate := cxSEYYA6.Text + LPAD(cxSEMMA6.Text, '0', 2);
-    //³ëµå¸¦ º¹»çÇØ¼­ paramÀ» »ı¼ºÇÑ´Ù....
+    //ë…¸ë“œë¥¼ ë³µì‚¬í•´ì„œ paramì„ ìƒì„±í•œë‹¤....
     sNode := '/cdms/Service/Data/Query/Param';
     lst_Node := xdom.documentElement.selectNodes(sNode);
     lst_clon := lst_node.item[0].cloneNode(True);
@@ -4303,11 +4303,11 @@ begin
 
   if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
   begin
-    GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+    GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
-  if fGetChk_Search_HdBrNo('°øÀ¯ÄİÁ¤»ê') then Exit;
+  if fGetChk_Search_HdBrNo('ê³µìœ ì½œì •ì‚°') then Exit;
 
   if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then
   begin
@@ -4333,7 +4333,7 @@ begin
     if (not xdom.loadXML(ls_rxxml)) then
     begin
       Screen.Cursor := crDefault;
-      ShowMessage('Àü¹® ErrorÀÔ´Ï´Ù. ´Ù½ÃÁ¶È¸ÇÏ¿©ÁÖ½Ê½Ã¿ä.');
+      ShowMessage('ì „ë¬¸ Errorì…ë‹ˆë‹¤. ë‹¤ì‹œì¡°íšŒí•˜ì—¬ì£¼ì‹­ì‹œìš”.');
       Exit;
     end;
 
@@ -4351,11 +4351,11 @@ begin
     if iType = 1 then
     begin
       if not Check_ID(GT_USERIF.ID, GT_SEL_BRNO.BrNo) then
-				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'CALLSHARE1' //º»»ç
+				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'CALLSHARE1' //ë³¸ì‚¬
 			else
-				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'CALLSHARE1_8282SN'; //º»»ç
+				lst_Node.item[0].attributes.getNamedItem('Key').Text := 'CALLSHARE1_8282SN'; //ë³¸ì‚¬
 		end else
-			lst_Node.item[0].attributes.getNamedItem('Key').Text := 'CALLSHARE2'; //Áö»ç
+			lst_Node.item[0].attributes.getNamedItem('Key').Text := 'CALLSHARE2'; //ì§€ì‚¬
 
     if (cxDtStartA7.Text = '') or (cxDtEndA7.Text = '') then
     begin
@@ -4364,7 +4364,7 @@ begin
     end;
     startDate := FormatDateTime('YYYYMMDD', cxDtStartA7.Date);
 		endDate   := FormatDateTime('YYYYMMDD', cxDtEndA7.Date - 1); 
-		//¸¶°¨µ¥ÀÌÅÍ¿¡ ´ëÇÑ Á¶È¸´Â ´çÀÏÀº Today~Today, ¾îÁ¦ : Today-1~Today-1 20161029 KHS
+		//ë§ˆê°ë°ì´í„°ì— ëŒ€í•œ ì¡°íšŒëŠ” ë‹¹ì¼ì€ Today~Today, ì–´ì œ : Today-1~Today-1 20161029 KHS
     sShare := '';
     if cxCBChk0A7.Checked then
       sShare := sShare + '0';
@@ -4387,7 +4387,7 @@ begin
     if cxCBChk9A7.Checked then
       sShare := sShare + '9';
 
-    //³ëµå¸¦ º¹»çÇØ¼­ paramÀ» »ı¼ºÇÑ´Ù....
+    //ë…¸ë“œë¥¼ ë³µì‚¬í•´ì„œ paramì„ ìƒì„±í•œë‹¤....
     sNode := '/cdms/Service/Data/Query/Param';
     lst_Node := xdom.documentElement.selectNodes(sNode);
     lst_clon := lst_node.item[0].cloneNode(True);
@@ -4503,24 +4503,24 @@ procedure TFrm_ACC.btnExcelA10Click(Sender: TObject);
 begin
 	if GridA10_1DBTableView.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := 'SMSÀÏ°ıÃæÀü³»¿ª.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>SMSÀÏ°ıÃæÀü³»¿ª]%s°Ç', [GetMoneyStr(GridA10_1DBTableView.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'SMSì¼ê´„ì¶©ì „ë‚´ì—­.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>SMSì¼ê´„ì¶©ì „ë‚´ì—­]%sê±´', [GetMoneyStr(GridA10_1DBTableView.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA10_1;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4530,24 +4530,24 @@ procedure TFrm_ACC.btnExcelA1Click(Sender: TObject);
 begin
 	if GridA1View.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := 'Áö»çÄ³½¬³»¿ª.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>Áö»çÄ³½¬³»¿ª]%s°Ç', [GetMoneyStr(GridA1View.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'ì§€ì‚¬ìºì‰¬ë‚´ì—­.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>ì§€ì‚¬ìºì‰¬ë‚´ì—­]%sê±´', [GetMoneyStr(GridA1View.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA1;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4557,24 +4557,24 @@ procedure TFrm_ACC.btnExcelA2Click(Sender: TObject);
 begin
 	if GridA2View.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSI);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSI);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSI);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSI);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := 'ÅëÀå½Ä·Î±×.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>ÅëÀå½Ä·Î±×]%s°Ç', [GetMoneyStr(GridA2View.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'í†µì¥ì‹ë¡œê·¸.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>í†µì¥ì‹ë¡œê·¸]%sê±´', [GetMoneyStr(GridA2View.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA2;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4584,24 +4584,24 @@ procedure TFrm_ACC.btnExcelA3Click(Sender: TObject);
 begin
 	if GridA3View.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := '¿À´õÁ¤»ê³»¿ª.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>¿À´õÁ¤»ê³»¿ª]%s°Ç', [GetMoneyStr(GridA3View.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'ì˜¤ë”ì •ì‚°ë‚´ì—­.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>ì˜¤ë”ì •ì‚°ë‚´ì—­]%sê±´', [GetMoneyStr(GridA3View.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA3;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4611,24 +4611,24 @@ procedure TFrm_ACC.btnExcelA4Click(Sender: TObject);
 begin
 	if GridA4View.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := 'Áö»çÃæÀü³»¿ª.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>Áö»çÃæÀü³»¿ª]%s°Ç', [GetMoneyStr(GridA4View.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'ì§€ì‚¬ì¶©ì „ë‚´ì—­.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>ì§€ì‚¬ì¶©ì „ë‚´ì—­]%sê±´', [GetMoneyStr(GridA4View.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA4;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4638,24 +4638,24 @@ procedure TFrm_ACC.btnExcelA5Click(Sender: TObject);
 begin
 	if GridA5View.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := '±â»çÃæÀü³»¿ª.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>±â»çÃæÀü³»¿ª]%s°Ç', [GetMoneyStr(GridA5View.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'ê¸°ì‚¬ì¶©ì „ë‚´ì—­.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>ê¸°ì‚¬ì¶©ì „ë‚´ì—­]%sê±´', [GetMoneyStr(GridA5View.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA5;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4665,24 +4665,24 @@ procedure TFrm_ACC.btnExcelA6Click(Sender: TObject);
 begin
 	if GridA6View.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := '±â»ç»ç¿ë·á.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>±â»ç»ç¿ë·á]%s°Ç', [GetMoneyStr(GridA6View.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'ê¸°ì‚¬ì‚¬ìš©ë£Œ.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>ê¸°ì‚¬ì‚¬ìš©ë£Œ]%sê±´', [GetMoneyStr(GridA6View.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA6;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4692,24 +4692,24 @@ procedure TFrm_ACC.btnExcelA7Click(Sender: TObject);
 begin
 	if GridA7View.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := '°øÀ¯ÄİÁ¤»ê.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>°øÀ¯ÄİÁ¤»ê]%s°Ç', [GetMoneyStr(GridA7View.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'ê³µìœ ì½œì •ì‚°.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>ê³µìœ ì½œì •ì‚°]%sê±´', [GetMoneyStr(GridA7View.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA7;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4719,24 +4719,24 @@ procedure TFrm_ACC.btnExcelA9Click(Sender: TObject);
 begin
 	if GridA9DBTableView.DataController.RecordCount = 0 then
   begin
-		GMessagebox('ÀÚ·á°¡ ¾ø½À´Ï´Ù.', CDMSE);
+		GMessagebox('ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
     Exit;
 	end;
 
   if GT_USERIF.Excel_Use = 'n' then
   begin
-    GMessagebox('[¿¢¼¿´Ù¿î·ÎµåÇã¿ë] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.', CDMSE);
+    GMessagebox('[ì—‘ì…€ë‹¤ìš´ë¡œë“œí—ˆìš©] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.', CDMSE);
     Exit;
   end;
 
 	if (TCK_USER_PER.ACC_ExcelDown <> '1') then
 	begin
-    ShowMessage('[¿¢¼¿´Ù¿î·Îµå[Á¤»ê¸Ş´º]] ±ÇÇÑÀÌ ¾ø½À´Ï´Ù. °ü¸®ÀÚ¿¡°Ô ¹®ÀÇ(±ÇÇÑ¿äÃ») ¹Ù¶ø´Ï´Ù.');
+    ShowMessage('[ì—‘ì…€ë‹¤ìš´ë¡œë“œ[ì •ì‚°ë©”ë‰´]] ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤. ê´€ë¦¬ìì—ê²Œ ë¬¸ì˜(ê¶Œí•œìš”ì²­) ë°”ëë‹ˆë‹¤.');
     Exit;
   end;
 
-  Frm_Main.sgExcel := 'SMSÃæÀü³»¿ª.xls';
-  Frm_Main.sgRpExcel := Format('Á¤»ê>SMSÃæÀü³»¿ª]%s°Ç', [GetMoneyStr(GridA9DBTableView.DataController.RecordCount)]);
+  Frm_Main.sgExcel := 'SMSì¶©ì „ë‚´ì—­.xls';
+  Frm_Main.sgRpExcel := Format('ì •ì‚°>SMSì¶©ì „ë‚´ì—­]%sê±´', [GetMoneyStr(GridA9DBTableView.DataController.RecordCount)]);
   Frm_Main.cxGridExcel := GridA9;
   Frm_Main.bgExcelOPT := False;
   Frm_Main.proc_excel(0);
@@ -4840,10 +4840,10 @@ var sColNM : string;
   iBrNo, iRow: Integer;
   sBrNo: string;
 begin
-  //2014.02.13 ÆÀÀå´Ô Áö½Ã»çÇ×
+  //2014.02.13 íŒ€ì¥ë‹˜ ì§€ì‹œì‚¬í•­
 	if (GS_PRJ_AREA = 'O') and ((GT_USERIF.ID = '8282king') or (GT_USERIF.ID = '8282si')) then Exit;
 
-  iBrNo := GridA1View.GetColumnByFieldName('Áö»çÄÚµå').Index;
+  iBrNo := GridA1View.GetColumnByFieldName('ì§€ì‚¬ì½”ë“œ').Index;
   iRow := GridA1View.DataController.FocusedRecordIndex;
   if iRow < 0 then Exit;
   sBrNo := GridA1View.DataController.Values[iRow, iBrNo];
@@ -4874,25 +4874,25 @@ var AView: TcxGridDBTableView;
 begin
   SetDebugeWrite('TFrm_ACC.proc_BankLog2');
   Try
-    if AGUBUN = 0 then //Áö»çÄ³½Ã »ó¼¼
+    if AGUBUN = 0 then //ì§€ì‚¬ìºì‹œ ìƒì„¸
     begin
-      Param := '¦¢' + ABrNo;
-      Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtStartA1.Date)+FormatDateTime('HHNNSS', cxTeStartA1.Time);
-      Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtEndA1.Date  )+FormatDateTime('HHNNSS', cxTeEndA1.Time);
+      Param := 'â”‚' + ABrNo;
+      Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtStartA1.Date)+FormatDateTime('HHNNSS', cxTeStartA1.Time);
+      Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtEndA1.Date  )+FormatDateTime('HHNNSS', cxTeEndA1.Time);
       btnSearchA1.Enabled := False;
     end else
-    if AGUBUN = 1 then //ÅëÀå½Ä·Î±×
+    if AGUBUN = 1 then //í†µì¥ì‹ë¡œê·¸
     begin
       if GridA2View.DataController.RecordCount > 0 then
         Exit;
 
       if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
       begin
-        GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSE);
+        GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSE);
         Exit;
       end;
 
-      if fGetChk_Search_HdBrNo('ÅëÀå½Ä·Î±×') then Exit;
+      if fGetChk_Search_HdBrNo('í†µì¥ì‹ë¡œê·¸') then Exit;
 
       if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then
       begin
@@ -4909,9 +4909,9 @@ begin
           sBrNo := GT_USERIF.BR;
         sHdNo := '';
       end;
-      Param := sHdNo + '¦¢' + sBrNo;
-      Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtStartA2.Date)+FormatDateTime('HHNNSS', cxTeStartA2.Time);
-      Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtEndA2.Date  )+FormatDateTime('HHNNSS', cxTeEndA2.Time);
+      Param := sHdNo + 'â”‚' + sBrNo;
+      Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtStartA2.Date)+FormatDateTime('HHNNSS', cxTeStartA2.Time);
+      Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtEndA2.Date  )+FormatDateTime('HHNNSS', cxTeEndA2.Time);
       btnSearchA2.Enabled := False;
     end;
 
@@ -4920,7 +4920,7 @@ begin
       slList := TStringList.Create;
       if not RequestBasePaging(GetSel06('BRCASH03', 'MNG_BR_CASH.BRCASH03', '1000', Param), slList, ErrCode, ErrMsg) then
       begin
-        GMessagebox(Format('ÅëÀå½Ä ·Î±× Á¶È¸ Áß ¿À·ù¹ß»ı'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSI);
+        GMessagebox(Format('í†µì¥ì‹ ë¡œê·¸ ì¡°íšŒ ì¤‘ ì˜¤ë¥˜ë°œìƒ'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSI);
         Screen.Cursor := crDefault;
         btnSearchA1.Enabled := True;
         btnSearchA2.Enabled := True;
@@ -4962,16 +4962,16 @@ begin
               try
                 for i := 0 to lst_Result.length - 1 do
                 begin
-                  GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                  GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
 
-                  //°í¿ëº¸Çè·á ¼¿ÀÇ ³»¿ë¸¸ Á¶È¸:¿ì¼±ÁÖ¼®Ã³¸®
-                  if (AColNM = '°í¿ëº¸Çè·á' ) and (Pos(AColNM, ls_Rcrd[4]) < 1) then Continue;
+                  //ê³ ìš©ë³´í—˜ë£Œ ì…€ì˜ ë‚´ìš©ë§Œ ì¡°íšŒ:ìš°ì„ ì£¼ì„ì²˜ë¦¬
+                  if (AColNM = 'ê³ ìš©ë³´í—˜ë£Œ' ) and (Pos(AColNM, ls_Rcrd[4]) < 1) then Continue;
 
-                  if AGUBUN = 0 then //Áö»çÄ³½Ã »ó¼¼
+                  if AGUBUN = 0 then //ì§€ì‚¬ìºì‹œ ìƒì„¸
                   begin
-                    iRow := AView.DataController.AppendRecord;  // 1 Record Ãß°¡
+                    iRow := AView.DataController.AppendRecord;  // 1 Record ì¶”ê°€
                   end else
-                  if AGUBUN = 1 then //ÅëÀå½Ä·Î±×
+                  if AGUBUN = 1 then //í†µì¥ì‹ë¡œê·¸
                   begin
                     if not Check_ID(GT_USERIF.ID, ls_Rcrd[0]) then
                     begin
@@ -5002,7 +5002,7 @@ begin
               end;
             end else
             begin
-              GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+              GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
             end;
           end;
         finally
@@ -5054,19 +5054,19 @@ begin
   Try
     if (GT_USERIF.LV = '10') and ((GT_SEL_BRNO.GUBUN <> '1') or (GT_SEL_BRNO.BrNo <> GT_USERIF.BR)) then
     begin
-      GMessagebox('»ó´ã¿ø ±ÇÇÑÀº ¼Ò¼Ó Áö»ç¸¸ Á¶È¸ÇÒ¼ö ÀÖ½À´Ï´Ù.', CDMSI);
+      GMessagebox('ìƒë‹´ì› ê¶Œí•œì€ ì†Œì† ì§€ì‚¬ë§Œ ì¡°íšŒí• ìˆ˜ ìˆìŠµë‹ˆë‹¤.', CDMSI);
       Exit;
     end;
 
-    if fGetChk_Search_HdBrNo('Áö»çÄ³½¬³»¿ª') then Exit;
+    if fGetChk_Search_HdBrNo('ì§€ì‚¬ìºì‰¬ë‚´ì—­') then Exit;
 
-    if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then  //º»»ç
+    if (GT_USERIF.LV = '60') and (GT_SEL_BRNO.GUBUN <> '1') then  //ë³¸ì‚¬
     begin
       if ( GT_USERIF.Family = 'y' ) And ( GT_USERIF.LV = '60' ) then     // 20120629 LYB
         Param := GT_SEL_BRNO.HDNO
       else
         Param := GT_USERIF.HD;
-      Param := Param + '¦¢' ;
+      Param := Param + 'â”‚' ;
     end else
     begin
       if (GT_USERIF.LV = '60') then
@@ -5075,15 +5075,15 @@ begin
           Param := GT_SEL_BRNO.HDNO
         else
           Param := GT_USERIF.HD;
-        Param := Param + '¦¢' + GT_SEL_BRNO.BrNo;
+        Param := Param + 'â”‚' + GT_SEL_BRNO.BrNo;
       end else
       begin
         Param := GT_USERIF.HD;
-        Param := Param + '¦¢' + GT_USERIF.BR;
+        Param := Param + 'â”‚' + GT_USERIF.BR;
       end;
     end;
-    Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtStartA1.Date)+FormatDateTime('HHNNSS', cxTeStartA1.Time);
-    Param := Param + '¦¢' + FormatDateTime('YYYYMMDD', cxDtEndA1.Date  )+FormatDateTime('HHNNSS', cxTeEndA1.Time);
+    Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtStartA1.Date)+FormatDateTime('HHNNSS', cxTeStartA1.Time);
+    Param := Param + 'â”‚' + FormatDateTime('YYYYMMDD', cxDtEndA1.Date  )+FormatDateTime('HHNNSS', cxTeEndA1.Time);
 
     btnSearchA1.Enabled := False;
     Screen.Cursor := crHourGlass;
@@ -5091,7 +5091,7 @@ begin
       slList := TStringList.Create;
       if not RequestBasePaging(GetSel06('BRCASH01', 'MNG_BR_CASH.BRCASH01', '1000', Param), slList, ErrCode, ErrMsg) then
       begin
-        GMessagebox(Format('Áö»çÄ³½Ã³»¿ª Á¶È¸ Áß ¿À·ù¹ß»ı'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSI);
+        GMessagebox(Format('ì§€ì‚¬ìºì‹œë‚´ì—­ ì¡°íšŒ ì¤‘ ì˜¤ë¥˜ë°œìƒ'#13#10'[%d]%s', [ErrCode, ErrMsg]), CDMSI);
         Screen.Cursor := crDefault;
         btnSearchA1.Enabled := True;
         Exit;
@@ -5121,32 +5121,32 @@ begin
             try
               for i := 0 to lst_Result.length - 1 do
               begin
-                GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
                 if not Check_ID(GT_USERIF.ID, ls_Rcrd[0]) then
                 begin
                   iRow := GridA1View.DataController.AppendRecord;
-                  // 1 Record Ãß°¡
+                  // 1 Record ì¶”ê°€
                   GridA1View.DataController.Values[iRow,  0] := IntToStr(iRow + 1);
                   GridA1View.DataController.Values[iRow,  1] := ls_Rcrd[0];
                   GridA1View.DataController.Values[iRow,  2] := ls_Rcrd[1];
-                  //Áö»ç¸í
-                  GridA1View.DataController.Values[iRow,  3] := StrToIntDef(ls_Rcrd[ 2], 0); //±â»ç°ø¿ëÄ³½¬
-                  GridA1View.DataController.Values[iRow,  4] := StrToIntDef(ls_Rcrd[ 3], 0); //¹ßÁÖ¼öÀÍ
-                  GridA1View.DataController.Values[iRow,  5] := StrToIntDef(ls_Rcrd[ 4], 0); //¼öÁÖÁö±Ş
-                  GridA1View.DataController.Values[iRow,  6] := StrToIntDef(ls_Rcrd[ 5], 0); //¼Ö·ç¼Ç»ç¿ë·á
-                  GridA1View.DataController.Values[iRow,  7] := StrToIntDef(ls_Rcrd[ 6], 0); //º¸Çè·á
-                  GridA1View.DataController.Values[iRow,  8] := StrToIntDef(ls_Rcrd[18], 0); //°í¿ëº¸Çè·á
-                  GridA1View.DataController.Values[iRow,  9] := StrToIntDef(ls_Rcrd[ 7], 0); //Ãë¼Ò¹ú±İ(°ø¿ë)
-                  GridA1View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[ 8], 0); //Äİ´ëÇà
-                  GridA1View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[ 9], 0); //Áö»çÀÔ±İ
-                  GridA1View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[10], 0); //Äİ¸¶³ÊÁ¤»ê
-                  GridA1View.DataController.Values[iRow, 13] := StrToIntDef(ls_Rcrd[11], 0); //Áö»çÄ³½¬ÀÌµ¿
-                  GridA1View.DataController.Values[iRow, 14] := StrToIntDef(ls_Rcrd[12], 0); //SMSÄ³½¬Ãâ±İ
-                  GridA1View.DataController.Values[iRow, 15] := StrToIntDef(ls_Rcrd[13], 0); //±âÅ¸
-                  GridA1View.DataController.Values[iRow, 16] := StrToIntDef(ls_Rcrd[14], 0); //ÇÕ°è
-                  GridA1View.DataController.Values[iRow, 17] := StrToIntDef(ls_Rcrd[16], 0); //½ÃÀÛÄ³½¬
-                  GridA1View.DataController.Values[iRow, 18] := StrToIntDef(ls_Rcrd[17], 0); //Á¾·áÄ³½¬
-                  GridA1View.DataController.Values[iRow, 19] := StrToIntDef(ls_Rcrd[15], 0); //ÀÜ¾× 
+                  //ì§€ì‚¬ëª…
+                  GridA1View.DataController.Values[iRow,  3] := StrToIntDef(ls_Rcrd[ 2], 0); //ê¸°ì‚¬ê³µìš©ìºì‰¬
+                  GridA1View.DataController.Values[iRow,  4] := StrToIntDef(ls_Rcrd[ 3], 0); //ë°œì£¼ìˆ˜ìµ
+                  GridA1View.DataController.Values[iRow,  5] := StrToIntDef(ls_Rcrd[ 4], 0); //ìˆ˜ì£¼ì§€ê¸‰
+                  GridA1View.DataController.Values[iRow,  6] := StrToIntDef(ls_Rcrd[ 5], 0); //ì†”ë£¨ì…˜ì‚¬ìš©ë£Œ
+                  GridA1View.DataController.Values[iRow,  7] := StrToIntDef(ls_Rcrd[ 6], 0); //ë³´í—˜ë£Œ
+                  GridA1View.DataController.Values[iRow,  8] := StrToIntDef(ls_Rcrd[18], 0); //ê³ ìš©ë³´í—˜ë£Œ
+                  GridA1View.DataController.Values[iRow,  9] := StrToIntDef(ls_Rcrd[ 7], 0); //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+                  GridA1View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[ 8], 0); //ì½œëŒ€í–‰
+                  GridA1View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[ 9], 0); //ì§€ì‚¬ì…ê¸ˆ
+                  GridA1View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[10], 0); //ì½œë§ˆë„ˆì •ì‚°
+                  GridA1View.DataController.Values[iRow, 13] := StrToIntDef(ls_Rcrd[11], 0); //ì§€ì‚¬ìºì‰¬ì´ë™
+                  GridA1View.DataController.Values[iRow, 14] := StrToIntDef(ls_Rcrd[12], 0); //SMSìºì‰¬ì¶œê¸ˆ
+                  GridA1View.DataController.Values[iRow, 15] := StrToIntDef(ls_Rcrd[13], 0); //ê¸°íƒ€
+                  GridA1View.DataController.Values[iRow, 16] := StrToIntDef(ls_Rcrd[14], 0); //í•©ê³„
+                  GridA1View.DataController.Values[iRow, 17] := StrToIntDef(ls_Rcrd[16], 0); //ì‹œì‘ìºì‰¬
+                  GridA1View.DataController.Values[iRow, 18] := StrToIntDef(ls_Rcrd[17], 0); //ì¢…ë£Œìºì‰¬
+                  GridA1View.DataController.Values[iRow, 19] := StrToIntDef(ls_Rcrd[15], 0); //ì”ì•¡ 
                 end;
               end;
             finally
@@ -5154,7 +5154,7 @@ begin
             end;
           end else
           begin
-            GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+            GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
           end;
         end;
       finally
@@ -5203,7 +5203,7 @@ begin
       if ('0000' = ls_MSG_Err) then
       begin
         ls_ClientKey := GetXmlClientKey(ls_rxxml);
-        if ls_ClientKey = 'CASHACC01' then //Áö»çÄ³½¬³»¿ª SEL06À¸·Î º¯°æ 20211229 KHS
+        if ls_ClientKey = 'CASHACC01' then //ì§€ì‚¬ìºì‰¬ë‚´ì—­ SEL06ìœ¼ë¡œ ë³€ê²½ 20211229 KHS
         begin
           GridA1View.BeginUpdate;
           GridA1View.DataController.SetRecordCount(0);
@@ -5228,31 +5228,31 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
                     if not Check_ID(GT_USERIF.ID, ls_Rcrd[0]) then
                     begin
                       iRow := GridA1View.DataController.AppendRecord;
-                      // 1 Record Ãß°¡
+                      // 1 Record ì¶”ê°€
                       GridA1View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                       GridA1View.DataController.Values[iRow, 1] := ls_Rcrd[0];
                       GridA1View.DataController.Values[iRow, 2] := ls_Rcrd[1];
-                      //Áö»ç¸í
-                      GridA1View.DataController.Values[iRow, 3] := StrToIntDef(ls_Rcrd[2], 0); //±â»ç°ø¿ëÄ³½¬
-                      GridA1View.DataController.Values[iRow, 4] := StrToIntDef(ls_Rcrd[3], 0); //¹ßÁÖ¼öÀÍ
-                      GridA1View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[4], 0); //¼öÁÖÁö±Ş
-                      GridA1View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //¼Ö·ç¼Ç»ç¿ë·á
-                      GridA1View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[6], 0); //º¸Çè·á
-                      GridA1View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[7], 0); //Ãë¼Ò¹ú±İ(°ø¿ë)
-                      GridA1View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[8], 0); //Äİ´ëÇà
-                      GridA1View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[9], 0); //Áö»çÀÔ±İ
-                      GridA1View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[10], 0); //Äİ¸¶³ÊÁ¤»ê
-                      GridA1View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[11], 0); //Áö»çÄ³½¬ÀÌµ¿
-                      GridA1View.DataController.Values[iRow, 13] := StrToIntDef(ls_Rcrd[12], 0); //SMSÄ³½¬Ãâ±İ
-                      GridA1View.DataController.Values[iRow, 14] := StrToIntDef(ls_Rcrd[13], 0); //±âÅ¸
-                      GridA1View.DataController.Values[iRow, 15] := StrToIntDef(ls_Rcrd[14], 0); //ÇÕ°è
-                      GridA1View.DataController.Values[iRow, 16] := StrToIntDef(ls_Rcrd[16], 0); //½ÃÀÛÄ³½¬
-                      GridA1View.DataController.Values[iRow, 17] := StrToIntDef(ls_Rcrd[17], 0); //Á¾·áÄ³½¬
-                      GridA1View.DataController.Values[iRow, 18] := StrToIntDef(ls_Rcrd[15], 0); //ÀÜ¾×
+                      //ì§€ì‚¬ëª…
+                      GridA1View.DataController.Values[iRow, 3] := StrToIntDef(ls_Rcrd[2], 0); //ê¸°ì‚¬ê³µìš©ìºì‰¬
+                      GridA1View.DataController.Values[iRow, 4] := StrToIntDef(ls_Rcrd[3], 0); //ë°œì£¼ìˆ˜ìµ
+                      GridA1View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[4], 0); //ìˆ˜ì£¼ì§€ê¸‰
+                      GridA1View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //ì†”ë£¨ì…˜ì‚¬ìš©ë£Œ
+                      GridA1View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[6], 0); //ë³´í—˜ë£Œ
+                      GridA1View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[7], 0); //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+                      GridA1View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[8], 0); //ì½œëŒ€í–‰
+                      GridA1View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[9], 0); //ì§€ì‚¬ì…ê¸ˆ
+                      GridA1View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[10], 0); //ì½œë§ˆë„ˆì •ì‚°
+                      GridA1View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[11], 0); //ì§€ì‚¬ìºì‰¬ì´ë™
+                      GridA1View.DataController.Values[iRow, 13] := StrToIntDef(ls_Rcrd[12], 0); //SMSìºì‰¬ì¶œê¸ˆ
+                      GridA1View.DataController.Values[iRow, 14] := StrToIntDef(ls_Rcrd[13], 0); //ê¸°íƒ€
+                      GridA1View.DataController.Values[iRow, 15] := StrToIntDef(ls_Rcrd[14], 0); //í•©ê³„
+                      GridA1View.DataController.Values[iRow, 16] := StrToIntDef(ls_Rcrd[16], 0); //ì‹œì‘ìºì‰¬
+                      GridA1View.DataController.Values[iRow, 17] := StrToIntDef(ls_Rcrd[17], 0); //ì¢…ë£Œìºì‰¬
+                      GridA1View.DataController.Values[iRow, 18] := StrToIntDef(ls_Rcrd[15], 0); //ì”ì•¡
                     end;
                   end;
                 finally
@@ -5260,7 +5260,7 @@ begin
 					  		end;
 					  	end else
 					  	begin
-					  		GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+					  		GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
 					  	end;
             end;
           finally
@@ -5268,7 +5268,7 @@ begin
             frm_Main.sbar_Message.Panels[4].Text := '';
           end;
         end else
-        if ls_ClientKey = 'BANKACC02' then //Áö»çÄ³½¬³»¿ª
+        if ls_ClientKey = 'BANKACC02' then //ì§€ì‚¬ìºì‰¬ë‚´ì—­
         begin
           if ( Not Assigned(Frm_ACC01) ) Or ( Frm_ACC01 = NIl ) then Frm_ACC01 := TFrm_ACC01.Create(Nil);
           Frm_ACC01.Grid3View.BeginUpdate;
@@ -5295,8 +5295,8 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
-                    iRow := Frm_ACC01.Grid3View.DataController.AppendRecord;  // 1 Record Ãß°¡
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    iRow := Frm_ACC01.Grid3View.DataController.AppendRecord;  // 1 Record ì¶”ê°€
                     Frm_ACC01.Grid3View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                     Frm_ACC01.Grid3View.DataController.Values[iRow, 1] := ls_Rcrd[1];
                     sTemp := ls_Rcrd[2];
@@ -5321,7 +5321,7 @@ begin
                 end;
 					  	end else
 					  	begin
-					  		GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+					  		GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
 					  	end;
             end;
           finally
@@ -5331,7 +5331,7 @@ begin
           if Frm_ACC01.Grid3View.DataController.RecordCount > 0 then
             Frm_ACC01.Show;
         end else
-				if ls_ClientKey = 'BANKACC01' then //ÅëÀå½Ä·Î±×
+				if ls_ClientKey = 'BANKACC01' then //í†µì¥ì‹ë¡œê·¸
         begin
           GridA2View.BeginUpdate;
           GridA2View.DataController.SetRecordCount(0);
@@ -5357,11 +5357,11 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
                     if not Check_ID(GT_USERIF.ID, ls_Rcrd[0]) then
 										begin
                       iRow := GridA2View.DataController.AppendRecord;
-											// 1 Record Ãß°¡
+											// 1 Record ì¶”ê°€
                       GridA2View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                       GridA2View.DataController.Values[iRow, 1] := ls_Rcrd[1];
                       sTemp := ls_Rcrd[2];
@@ -5376,11 +5376,11 @@ begin
                       GridA2View.DataController.Values[iRow, 2] := sTemp;
                       GridA2View.DataController.Values[iRow, 3] := ls_Rcrd[3];
                       GridA2View.DataController.Values[iRow, 4] := ls_Rcrd[4];
-                      GridA2View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[5], 0); //¼Ö·ç¼Ç»ç¿ë·á
-                      GridA2View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[6], 0); //º¸Çè·á
+                      GridA2View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[5], 0); //ì†”ë£¨ì…˜ì‚¬ìš©ë£Œ
+                      GridA2View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[6], 0); //ë³´í—˜ë£Œ
 											sTemp := StringReplace(ls_Rcrd[7], #$A, ' ', [rfReplaceAll]);
-											GridA2View.DataController.Values[iRow, 7] := sTemp;                 //Ãë¼Ò¹ú±İ(°ø¿ë)
-											GridA2View.DataController.Values[iRow, 8] := ls_Rcrd[8];                 //Áö»çÀÔ±İ
+											GridA2View.DataController.Values[iRow, 7] := sTemp;                 //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+											GridA2View.DataController.Values[iRow, 8] := ls_Rcrd[8];                 //ì§€ì‚¬ì…ê¸ˆ
                     end;
                   end;
                 finally
@@ -5388,7 +5388,7 @@ begin
                 end;
 					  	end else
 					  	begin
-					  		GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+					  		GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
 					  	end;
             end;
           finally
@@ -5422,12 +5422,12 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
                     ls_Rcrd.Insert(13, '');
                     if not Check_ID(GT_USERIF.ID, ls_Rcrd[0]) then
                     begin
                       iRow := GridA3View.DataController.AppendRecord;
-                      // 1 Record Ãß°¡
+                      // 1 Record ì¶”ê°€
                       GridA3View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                       sTemp := ls_Rcrd[0];
                       if sTemp <> '' then
@@ -5439,19 +5439,19 @@ begin
                                  Copy(sTemp, 9, 2) + ':' + Copy(sTemp, 11, 2) + ':' + Copy(sTemp, 13, 2);
                       end;
                       GridA3View.DataController.Values[iRow, 1] := sTemp;
-                      GridA3View.DataController.Values[iRow, 2] := ls_Rcrd[1];                     //Áö»ç¸í
-                      GridA3View.DataController.Values[iRow, 3] := ls_Rcrd[2];                     //¼öÁÖÁö±Ş
-                      GridA3View.DataController.Values[iRow, 4] := ls_Rcrd[3];                     //¼Ö·ç¼Ç»ç¿ë·á
-                      GridA3View.DataController.Values[iRow, 5] := ls_Rcrd[4];                     //º¸Çè·á
-                      GridA3View.DataController.Values[iRow, 6] := ls_Rcrd[5];                     //Ãë¼Ò¹ú±İ(°ø¿ë)
-                      GridA3View.DataController.Values[iRow, 7] := ls_Rcrd[6];                     //Äİ´ëÇà
-                      GridA3View.DataController.Values[iRow, 8] := ls_Rcrd[7];                     //Áö»çÀÔ±İ
+                      GridA3View.DataController.Values[iRow, 2] := ls_Rcrd[1];                     //ì§€ì‚¬ëª…
+                      GridA3View.DataController.Values[iRow, 3] := ls_Rcrd[2];                     //ìˆ˜ì£¼ì§€ê¸‰
+                      GridA3View.DataController.Values[iRow, 4] := ls_Rcrd[3];                     //ì†”ë£¨ì…˜ì‚¬ìš©ë£Œ
+                      GridA3View.DataController.Values[iRow, 5] := ls_Rcrd[4];                     //ë³´í—˜ë£Œ
+                      GridA3View.DataController.Values[iRow, 6] := ls_Rcrd[5];                     //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+                      GridA3View.DataController.Values[iRow, 7] := ls_Rcrd[6];                     //ì½œëŒ€í–‰
+                      GridA3View.DataController.Values[iRow, 8] := ls_Rcrd[7];                     //ì§€ì‚¬ì…ê¸ˆ
                       GridA3View.DataController.Values[iRow, 9] := ls_Rcrd[8];
                       GridA3View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[9], 0);
                       GridA3View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[10], 0);
-                      GridA3View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[11], 0); //Áö»ç¸í
-                      GridA3View.DataController.Values[iRow, 14] := StrToIntDef(ls_Rcrd[12], 0); //¼öÁÖÁö±Ş
-                      // Á¤»êºñÀ² °è»ê
+                      GridA3View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[11], 0); //ì§€ì‚¬ëª…
+                      GridA3View.DataController.Values[iRow, 14] := StrToIntDef(ls_Rcrd[12], 0); //ìˆ˜ì£¼ì§€ê¸‰
+                      // ì •ì‚°ë¹„ìœ¨ ê³„ì‚°
                       iCharge := StrToIntDef(ls_Rcrd[9], 0);
                       iBalju := Abs(StrToIntDef(ls_Rcrd[12], 0));
                       iCom := StrToIntDef(ls_Rcrd[10], 0);
@@ -5475,12 +5475,12 @@ begin
                       iCash := iCom + StrToIntDef(ls_Rcrd[12], 0);
                       GridA3View.DataController.Values[iRow, 13] := IntToStr(iComCyCash);
                       GridA3View.DataController.Values[iRow, 15] := IntToStr(iCash);
-                      GridA3View.DataController.Values[iRow, 17] := ls_Rcrd[14]; //º¸Çè·á
-                      GridA3View.DataController.Values[iRow, 18] := ls_Rcrd[15]; //Ãë¼Ò¹ú±İ(°ø¿ë)
-                      GridA3View.DataController.Values[iRow, 19] := ls_Rcrd[16]; //Äİ´ëÇà
-                      GridA3View.DataController.Values[iRow, 20] := ls_Rcrd[17]; //Äİ´ëÇà
+                      GridA3View.DataController.Values[iRow, 17] := ls_Rcrd[14]; //ë³´í—˜ë£Œ
+                      GridA3View.DataController.Values[iRow, 18] := ls_Rcrd[15]; //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+                      GridA3View.DataController.Values[iRow, 19] := ls_Rcrd[16]; //ì½œëŒ€í–‰
+                      GridA3View.DataController.Values[iRow, 20] := ls_Rcrd[17]; //ì½œëŒ€í–‰
 
-                      GridA3View.DataController.Values[iRow, 21] := ls_Rcrd[18]; //Äİ´ëÇà
+                      GridA3View.DataController.Values[iRow, 21] := ls_Rcrd[18]; //ì½œëŒ€í–‰
                     end;
                   end;
                 finally
@@ -5488,7 +5488,7 @@ begin
                 end;
 					  	end	else
 					  	begin
-								GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+								GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
 					  	end;
 					  end;
           finally
@@ -5523,10 +5523,10 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
-  //                  ls_Rcrd := GetTextSeperation('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+  //                  ls_Rcrd := GetTextSeperation('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text);
                     iRow := GridA4View.DataController.AppendRecord;
-                    // 1 Record Ãß°¡
+                    // 1 Record ì¶”ê°€
                     GridA4View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                     GridA4View.DataController.Values[iRow, 1] := ls_Rcrd[0];
                     sTemp := ls_Rcrd[1];
@@ -5538,19 +5538,19 @@ begin
                       sTemp := Copy(sTemp, 1, 4) + '-' + Copy(sTemp,  5, 2) + '-' + Copy(sTemp,  7, 2) + ' ' +
                                Copy(sTemp, 9, 2) + ':' + Copy(sTemp, 11, 2) + ':' + Copy(sTemp, 13, 2);
                     end;
-                    GridA4View.DataController.Values[iRow, 2] := sTemp; //Áö»ç¸í
-                    GridA4View.DataController.Values[iRow, 3] := ls_Rcrd[2]; //¼öÁÖÁö±Ş
-                    GridA4View.DataController.Values[iRow, 4] := ls_Rcrd[3]; //¼Ö·ç¼Ç»ç¿ë·á
-                    GridA4View.DataController.Values[iRow, 5] := ls_Rcrd[4]; //º¸Çè·á
-                    GridA4View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //Ãë¼Ò¹ú±İ(°ø¿ë)
-                    GridA4View.DataController.Values[iRow, 7] := ls_Rcrd[6]; //Äİ´ëÇà
+                    GridA4View.DataController.Values[iRow, 2] := sTemp; //ì§€ì‚¬ëª…
+                    GridA4View.DataController.Values[iRow, 3] := ls_Rcrd[2]; //ìˆ˜ì£¼ì§€ê¸‰
+                    GridA4View.DataController.Values[iRow, 4] := ls_Rcrd[3]; //ì†”ë£¨ì…˜ì‚¬ìš©ë£Œ
+                    GridA4View.DataController.Values[iRow, 5] := ls_Rcrd[4]; //ë³´í—˜ë£Œ
+                    GridA4View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+                    GridA4View.DataController.Values[iRow, 7] := ls_Rcrd[6]; //ì½œëŒ€í–‰
                   end;
                 finally
                   ls_Rcrd.Free;
                 end;
               end else
               begin
-                GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+                GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
               end;
             end;
           finally
@@ -5585,11 +5585,11 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
                     if not Check_ID(GT_USERIF.ID, ls_Rcrd[0]) then
                     begin
                       iRow := GridA5View.DataController.AppendRecord;
-                      // 1 Record Ãß°¡
+                      // 1 Record ì¶”ê°€
                       GridA5View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                       GridA5View.DataController.Values[iRow, 1] := ls_Rcrd[0];
                       sTemp := ls_Rcrd[1];
@@ -5601,13 +5601,13 @@ begin
                         sTemp := Copy(sTemp, 1, 4) + '-' + Copy(sTemp, 5 , 2) + '-' + Copy(sTemp,  7, 2) + ' ' +
                                  Copy(sTemp, 9, 2) + ':' + Copy(sTemp, 11, 2) + ':' + Copy(sTemp, 13, 2);
                       end;
-                      GridA5View.DataController.Values[iRow, 2] := sTemp; //Áö»ç¸í
-                      GridA5View.DataController.Values[iRow, 3] := ls_Rcrd[2];                    //¼öÁÖÁö±Ş
-                      GridA5View.DataController.Values[iRow, 4] := ls_Rcrd[3];                    //¼Ö·ç¼Ç»ç¿ë·á
-                      GridA5View.DataController.Values[iRow, 5] := ls_Rcrd[4];                    //º¸Çè·á
-                      GridA5View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //Ãë¼Ò¹ú±İ(°ø¿ë)
-                      GridA5View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[6], 0); //Äİ´ëÇà
-                      GridA5View.DataController.Values[iRow, 8] := ls_Rcrd[7];                 //Áö»çÀÔ±İ
+                      GridA5View.DataController.Values[iRow, 2] := sTemp; //ì§€ì‚¬ëª…
+                      GridA5View.DataController.Values[iRow, 3] := ls_Rcrd[2];                    //ìˆ˜ì£¼ì§€ê¸‰
+                      GridA5View.DataController.Values[iRow, 4] := ls_Rcrd[3];                    //ì†”ë£¨ì…˜ì‚¬ìš©ë£Œ
+                      GridA5View.DataController.Values[iRow, 5] := ls_Rcrd[4];                    //ë³´í—˜ë£Œ
+                      GridA5View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+                      GridA5View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[6], 0); //ì½œëŒ€í–‰
+                      GridA5View.DataController.Values[iRow, 8] := ls_Rcrd[7];                 //ì§€ì‚¬ì…ê¸ˆ
                       GridA5View.DataController.Values[iRow, 9] := ls_Rcrd[8];
                       GridA5View.DataController.Values[iRow, 10] := ls_Rcrd[9];
                     end;
@@ -5617,7 +5617,7 @@ begin
                 end;
               end else
               begin
-                GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+                GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
               end;
             end;
           finally
@@ -5654,20 +5654,20 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
                     if not Check_ID(GT_USERIF.ID, ls_Rcrd[3]) then
                     begin
                       iRow := GridA6View.DataController.AppendRecord;
-                      // 1 Record Ãß°¡
+                      // 1 Record ì¶”ê°€
                       GridA6View.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                       GridA6View.DataController.Values[iRow, 1] := ls_Rcrd[0];
-                      GridA6View.DataController.Values[iRow, 2] := ls_Rcrd[1]; //Áö»ç¸í
-                      GridA6View.DataController.Values[iRow, 3] := ls_Rcrd[2]; //¼öÁÖÁö±Ş
-                      GridA6View.DataController.Values[iRow, 4] := ls_Rcrd[3]; //¼Ö·ç¼Ç»ç¿ë·á
-                      GridA6View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[4], 0); //º¸Çè·á
-                      GridA6View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //Ãë¼Ò¹ú±İ(°ø¿ë)
-                      GridA6View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[6], 0); //Äİ´ëÇà
-                      GridA6View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[7], 0); //Áö»çÀÔ±İ
+                      GridA6View.DataController.Values[iRow, 2] := ls_Rcrd[1]; //ì§€ì‚¬ëª…
+                      GridA6View.DataController.Values[iRow, 3] := ls_Rcrd[2]; //ìˆ˜ì£¼ì§€ê¸‰
+                      GridA6View.DataController.Values[iRow, 4] := ls_Rcrd[3]; //ì†”ë£¨ì…˜ì‚¬ìš©ë£Œ
+                      GridA6View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[4], 0); //ë³´í—˜ë£Œ
+                      GridA6View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[5], 0); //ì·¨ì†Œë²Œê¸ˆ(ê³µìš©)
+                      GridA6View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[6], 0); //ì½œëŒ€í–‰
+                      GridA6View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[7], 0); //ì§€ì‚¬ì…ê¸ˆ
                       GridA6View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[8], 0);
                       GridA6View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[9], 0);
                     end;
@@ -5677,7 +5677,7 @@ begin
                 end;
               end else
               begin
-								GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+								GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
               end;
             end;
           finally
@@ -5717,8 +5717,8 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
-                    if ls_Rcrd[11] = '¹ßÁÖ' then
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    if ls_Rcrd[11] = 'ë°œì£¼' then
                     begin
                       if ls_Rcrd[4] <> '' then
                         slBalBrNo.Add(ls_Rcrd[4])
@@ -5726,7 +5726,7 @@ begin
                         slBalBrNo.Add(ls_Rcrd[2]);
                       slBalju.Add(lst_Result.item[i].attributes.getNamedItem('Value').Text);
                     end else
-                    if ls_Rcrd[11] = '¼öÁÖ' then
+                    if ls_Rcrd[11] = 'ìˆ˜ì£¼' then
                     begin
                       if ls_Rcrd[4] <> '' then
                         slSuBrNo.Add(ls_Rcrd[4])
@@ -5734,7 +5734,7 @@ begin
                         slSuBrNo.Add(ls_Rcrd[2]);
                       slSuju.Add(lst_Result.item[i].attributes.getNamedItem('Value').Text);
                     end else
-                    if ls_Rcrd[11] = 'ÀÚÃ¼' then
+                    if ls_Rcrd[11] = 'ìì²´' then
                     begin
                       slOwner.Add(lst_Result.item[i].attributes.getNamedItem('Value').Text);
                     end;
@@ -5758,22 +5758,22 @@ begin
               try
                 for i := 0 to slBalju.Count - 1 do
                 begin
-                  GetTextSeperationEx('¦¢', slBalju[i], ls_Rcrd);
-                  iRow := GridA7View.DataController.AppendRecord; // 1 Record Ãß°¡
+                  GetTextSeperationEx('â”‚', slBalju[i], ls_Rcrd);
+                  iRow := GridA7View.DataController.AppendRecord; // 1 Record ì¶”ê°€
 					  			GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);             //NO
-					  			GridA7View.DataController.Values[iRow, 0] := ls_Rcrd[11];                    //Å¸ÀÔ
-					  			GridA7View.DataController.Values[iRow, 2] := ls_Rcrd[1];                     //¿¬ÇÕ¸í
-					  			GridA7View.DataController.Values[iRow, 3] := ls_Rcrd[3];                     //º»»ç¸í
-					  			GridA7View.DataController.Values[iRow, 4] := ls_Rcrd[5];                     //Áö»ç¸í
-//				  				GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[6], 0);     //°Ç¼ö
-//				  				GridA7View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[7], 0);     //¿îÇà¿ä±İ
-//				  				GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[8], 0);     //¼ö¼ö·á
-//				  				GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[9], 0);     //¹ßÁÖºñ
-//				  				GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[12], 0);   //¼ö¼ö·á0¿ø °Ç¼ö
-//				  				GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[13], 0);   //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
+					  			GridA7View.DataController.Values[iRow, 0] := ls_Rcrd[11];                    //íƒ€ì…
+					  			GridA7View.DataController.Values[iRow, 2] := ls_Rcrd[1];                     //ì—°í•©ëª…
+					  			GridA7View.DataController.Values[iRow, 3] := ls_Rcrd[3];                     //ë³¸ì‚¬ëª…
+					  			GridA7View.DataController.Values[iRow, 4] := ls_Rcrd[5];                     //ì§€ì‚¬ëª…
+//				  				GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[6], 0);     //ê±´ìˆ˜
+//				  				GridA7View.DataController.Values[iRow, 6] := StrToIntDef(ls_Rcrd[7], 0);     //ìš´í–‰ìš”ê¸ˆ
+//				  				GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[8], 0);     //ìˆ˜ìˆ˜ë£Œ
+//				  				GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[9], 0);     //ë°œì£¼ë¹„
+//				  				GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[12], 0);   //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
+//				  				GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[13], 0);   //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
 
-					  			GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);     //¹ßÁÖºñ
-					  			// Á¤»êºñÀ² °è»ê
+					  			GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);     //ë°œì£¼ë¹„
+					  			// ì •ì‚°ë¹„ìœ¨ ê³„ì‚°
 					  			iCharge := StrToIntDef(ls_Rcrd[7], 0);
 					  			iBalju := Abs(StrToIntDef(ls_Rcrd[9], 0));
 					  			iCom := StrToIntDef(ls_Rcrd[8], 0);
@@ -5791,15 +5791,15 @@ begin
 					  			if iBalju = 0 then
 					  				GridA7View.DataController.Values[iRow, 6] := ''
 					  			else
-					  				GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // Á¤»êºñÀ²
+					  				GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // ì •ì‚°ë¹„ìœ¨
 
-					  			GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);     //¿îÇà¿ä±İ
-					  			GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);     //¼ö¼ö·á
-					  			GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);   //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  			GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);     //°Ç¼ö
-					  			GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);   //¼ö¼ö·á0¿ø °Ç¼ö
+					  			GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);     //ìš´í–‰ìš”ê¸ˆ
+					  			GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);     //ìˆ˜ìˆ˜ë£Œ
+					  			GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);   //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  			GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);     //ê±´ìˆ˜
+					  			GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);   //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
 					  			GridA7View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[6], 0)
-					  																									+ StrToIntDef(ls_Rcrd[12], 0);   //°Ç¼öÇÕ°è
+					  																									+ StrToIntDef(ls_Rcrd[12], 0);   //ê±´ìˆ˜í•©ê³„
 
 					  			iCnt := iCnt + StrToIntDef(ls_Rcrd[6], 0);
                   iCharge2 := iCharge2 + StrToIntDef(ls_Rcrd[7], 0);
@@ -5812,19 +5812,19 @@ begin
 					  	finally
                 ls_Rcrd.Free;
               end;
-              iRow := GridA7View.DataController.AppendRecord; // 1 Record Ãß°¡
+              iRow := GridA7View.DataController.AppendRecord; // 1 Record ì¶”ê°€
               GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);
-              GridA7View.DataController.Values[iRow, 0] := '¹ßÁÖ';
-              GridA7View.DataController.Values[iRow, 2] := '¹ßÁÖÇÕ°è';
+              GridA7View.DataController.Values[iRow, 0] := 'ë°œì£¼';
+              GridA7View.DataController.Values[iRow, 2] := 'ë°œì£¼í•©ê³„';
               GridA7View.DataController.Values[iRow, 3] := '';
 					  	GridA7View.DataController.Values[iRow, 4] := '';
-					  	GridA7View.DataController.Values[iRow, 5] := iBalju2;//IntToStr(iBalju2);    //¹ßÁÖºñ
-					  	GridA7View.DataController.Values[iRow, 7] := iCharge2;//IntToStr(iCharge2);  //¿îÇà¿ä±İ
-					  	GridA7View.DataController.Values[iRow, 8] := iCom2;//IntToStr(iCom2);        //¼ö¼ö·á
-					  	GridA7View.DataController.Values[iRow, 9] := ZeroCharge;                     //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  	GridA7View.DataController.Values[iRow, 10] := iCnt;//IntToStr(iCnt);         //°Ç¼ö
-					  	GridA7View.DataController.Values[iRow, 11] := ZeroCnt;                       //¼ö¼ö·á0¿ø °Ç¼ö
-					  	GridA7View.DataController.Values[iRow, 12] := iCnt + ZeroCnt;                //°Ç¼öÇÕ°è
+					  	GridA7View.DataController.Values[iRow, 5] := iBalju2;//IntToStr(iBalju2);    //ë°œì£¼ë¹„
+					  	GridA7View.DataController.Values[iRow, 7] := iCharge2;//IntToStr(iCharge2);  //ìš´í–‰ìš”ê¸ˆ
+					  	GridA7View.DataController.Values[iRow, 8] := iCom2;//IntToStr(iCom2);        //ìˆ˜ìˆ˜ë£Œ
+					  	GridA7View.DataController.Values[iRow, 9] := ZeroCharge;                     //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  	GridA7View.DataController.Values[iRow, 10] := iCnt;//IntToStr(iCnt);         //ê±´ìˆ˜
+					  	GridA7View.DataController.Values[iRow, 11] := ZeroCnt;                       //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
+					  	GridA7View.DataController.Values[iRow, 12] := iCnt + ZeroCnt;                //ê±´ìˆ˜í•©ê³„
 					  end;
 
             iBalju2 := 0;
@@ -5839,15 +5839,15 @@ begin
               try
                 for i := 0 to slSuju.Count - 1 do
                 begin
-                  GetTextSeperationEx('¦¢', slSuju[i], ls_Rcrd);
-                  iRow := GridA7View.DataController.AppendRecord; // 1 Record Ãß°¡
+                  GetTextSeperationEx('â”‚', slSuju[i], ls_Rcrd);
+                  iRow := GridA7View.DataController.AppendRecord; // 1 Record ì¶”ê°€
                   GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow +
                     1);
                   GridA7View.DataController.Values[iRow, 0] := ls_Rcrd[11];
                   GridA7View.DataController.Values[iRow, 2] := ls_Rcrd[1];
                   GridA7View.DataController.Values[iRow, 3] := ls_Rcrd[3];
 					  			GridA7View.DataController.Values[iRow, 4] := ls_Rcrd[5];
-					  			GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);      //¹ßÁÖºñ
+					  			GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);      //ë°œì£¼ë¹„
 					  			iCharge := StrToIntDef(ls_Rcrd[7], 0);
 					  			iBalju := Abs(StrToIntDef(ls_Rcrd[9], 0));
 					  			iCom := StrToIntDef(ls_Rcrd[8], 0);
@@ -5865,15 +5865,15 @@ begin
 					  			if iBalju = 0 then
 					  				GridA7View.DataController.Values[iRow, 6] := ''
 					  			else
-					  				GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // Á¤»êºñÀ²
+					  				GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // ì •ì‚°ë¹„ìœ¨
 
-					  			GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);      //¿îÇà¿ä±İ
-					  			GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);      //¼ö¼ö·á
-					  			GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);    //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  			GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);      //°Ç¼ö
-					  			GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);    //¼ö¼ö·á0¿ø °Ç¼ö
+					  			GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);      //ìš´í–‰ìš”ê¸ˆ
+					  			GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);      //ìˆ˜ìˆ˜ë£Œ
+					  			GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);    //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  			GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);      //ê±´ìˆ˜
+					  			GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);    //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
 					  			GridA7View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[6], 0)
-					  																									+ StrToIntDef(ls_Rcrd[12], 0);   //°Ç¼öÇÕ°è
+					  																									+ StrToIntDef(ls_Rcrd[12], 0);   //ê±´ìˆ˜í•©ê³„
 
 					  			iCnt := iCnt + StrToIntDef(ls_Rcrd[6], 0);
                   iCharge2 := iCharge2 + StrToIntDef(ls_Rcrd[7], 0);
@@ -5885,19 +5885,19 @@ begin
               finally
                 ls_Rcrd.Free;
               end;
-              iRow := GridA7View.DataController.AppendRecord; // 1 Record Ãß°¡
+              iRow := GridA7View.DataController.AppendRecord; // 1 Record ì¶”ê°€
               GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);
-              GridA7View.DataController.Values[iRow, 0] := '¼öÁÖ';
-              GridA7View.DataController.Values[iRow, 2] := '¼öÁÖÇÕ°è';
+              GridA7View.DataController.Values[iRow, 0] := 'ìˆ˜ì£¼';
+              GridA7View.DataController.Values[iRow, 2] := 'ìˆ˜ì£¼í•©ê³„';
               GridA7View.DataController.Values[iRow, 3] := '';
               GridA7View.DataController.Values[iRow, 4] := '';
-					  	GridA7View.DataController.Values[iRow, 5] := iBalju2;                //¹ßÁÖºñ
-					  	GridA7View.DataController.Values[iRow, 7] := iCharge2;               //¿îÇà¿ä±İ
-					  	GridA7View.DataController.Values[iRow, 8] := iCom2;                  //¼ö¼ö·á
-					  	GridA7View.DataController.Values[iRow, 9] := ZeroCharge;             //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  	GridA7View.DataController.Values[iRow, 10]  := iCnt;                 //°Ç¼ö
-					  	GridA7View.DataController.Values[iRow, 11] := ZeroCnt;               //¼ö¼ö·á0¿ø °Ç¼ö
-					  	GridA7View.DataController.Values[iRow, 12] := iCnt + ZeroCnt;        //°Ç¼öÇÕ°è
+					  	GridA7View.DataController.Values[iRow, 5] := iBalju2;                //ë°œì£¼ë¹„
+					  	GridA7View.DataController.Values[iRow, 7] := iCharge2;               //ìš´í–‰ìš”ê¸ˆ
+					  	GridA7View.DataController.Values[iRow, 8] := iCom2;                  //ìˆ˜ìˆ˜ë£Œ
+					  	GridA7View.DataController.Values[iRow, 9] := ZeroCharge;             //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  	GridA7View.DataController.Values[iRow, 10]  := iCnt;                 //ê±´ìˆ˜
+					  	GridA7View.DataController.Values[iRow, 11] := ZeroCnt;               //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
+					  	GridA7View.DataController.Values[iRow, 12] := iCnt + ZeroCnt;        //ê±´ìˆ˜í•©ê³„
 					  end;
 
             iBalju2 := 0;
@@ -5916,16 +5916,16 @@ begin
                   j := slSuBrNo.IndexOf(slBalBrNo.Strings[i]);
                   if j = -1 then
                   begin
-                    GetTextSeperationEx('¦¢', slBalju[i], ls_Rcrd);
+                    GetTextSeperationEx('â”‚', slBalju[i], ls_Rcrd);
                     iRow := GridA7View.DataController.AppendRecord;
-                    // 1 Record Ãß°¡
+                    // 1 Record ì¶”ê°€
                     GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);
-                    GridA7View.DataController.Values[iRow, 0] := '¹ßÁÖ - ¼öÁÖ';
+                    GridA7View.DataController.Values[iRow, 0] := 'ë°œì£¼ - ìˆ˜ì£¼';
                     GridA7View.DataController.Values[iRow, 2] := ls_Rcrd[1];
                     GridA7View.DataController.Values[iRow, 3] := ls_Rcrd[3];
 					  				GridA7View.DataController.Values[iRow, 4] := ls_Rcrd[5];
-					  				GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);        //¹ßÁÖºñ
-					  				// Á¤»êºñÀ² °è»ê
+					  				GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);        //ë°œì£¼ë¹„
+					  				// ì •ì‚°ë¹„ìœ¨ ê³„ì‚°
 					  				iCharge := StrToIntDef(ls_Rcrd[7], 0);
 					  				iBalju := Abs(StrToIntDef(ls_Rcrd[9], 0));
 					  				iCom := StrToIntDef(ls_Rcrd[8], 0);
@@ -5943,15 +5943,15 @@ begin
                     if iBalju = 0 then
 					  					GridA7View.DataController.Values[iRow, 6] := ''
                     else
-					  					GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // Á¤»êºñÀ²
+					  					GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // ì •ì‚°ë¹„ìœ¨
 
-					  				GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);        //¿îÇà¿ä±İ
-					  				GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);        //¼ö¼ö·á
-					  				GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);       //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  				GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);       //°Ç¼ö
-					  				GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);      //¼ö¼ö·á0¿ø °Ç¼ö
+					  				GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);        //ìš´í–‰ìš”ê¸ˆ
+					  				GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);        //ìˆ˜ìˆ˜ë£Œ
+					  				GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);       //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  				GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);       //ê±´ìˆ˜
+					  				GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);      //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
 					  				GridA7View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[6], 0)
-					  																										+ StrToIntDef(ls_Rcrd[12], 0);      //°Ç¼öÇÕ°è
+					  																										+ StrToIntDef(ls_Rcrd[12], 0);      //ê±´ìˆ˜í•©ê³„
 					  				iCnt := iCnt + StrToIntDef(ls_Rcrd[6], 0);
                     iCharge2 := iCharge2 + StrToIntDef(ls_Rcrd[7], 0);
                     iCom2 := iCom2 + StrToIntDef(ls_Rcrd[8], 0);
@@ -5960,17 +5960,17 @@ begin
 					  				ZeroCharge := ZeroCharge + StrToIntDef(ls_Rcrd[13], 0);
 					  			end else
 					  			begin
-                    GetTextSeperationEx('¦¢', slBalju[i], ls_Rcrd);
-                    GetTextSeperationex('¦¢', slSuju[j], ls_Rcrd2);
+                    GetTextSeperationEx('â”‚', slBalju[i], ls_Rcrd);
+                    GetTextSeperationex('â”‚', slSuju[j], ls_Rcrd2);
                     slSuju[j] := '';
                     iRow := GridA7View.DataController.AppendRecord;
-                    // 1 Record Ãß°¡
+                    // 1 Record ì¶”ê°€
                     GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);
-                    GridA7View.DataController.Values[iRow, 0] := '¹ßÁÖ - ¼öÁÖ';
+                    GridA7View.DataController.Values[iRow, 0] := 'ë°œì£¼ - ìˆ˜ì£¼';
                     GridA7View.DataController.Values[iRow, 2] := ls_Rcrd[1];
                     GridA7View.DataController.Values[iRow, 3] := ls_Rcrd[3];
 					  				GridA7View.DataController.Values[iRow, 4] := ls_Rcrd[5];
-					  				GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0) - StrToIntDef(ls_Rcrd2[9], 0);         //¹ßÁÖºñ
+					  				GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0) - StrToIntDef(ls_Rcrd2[9], 0);         //ë°œì£¼ë¹„
 					  				iCharge := StrToIntDef(ls_Rcrd[7], 0);
 					  				iBalju := Abs(StrToIntDef(ls_Rcrd[9], 0));
 					  				iCom := StrToIntDef(ls_Rcrd[8], 0);
@@ -5988,15 +5988,15 @@ begin
 					  				if iBalju = 0 then
 					  					GridA7View.DataController.Values[iRow, 6] := ''
 					  				else
-					  					GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // Á¤»êºñÀ²
+					  					GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); // ì •ì‚°ë¹„ìœ¨
 
-					  				GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0) - StrToIntDef(ls_Rcrd2[7], 0);         //¿îÇà¿ä±İ
-					  				GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0) - StrToIntDef(ls_Rcrd2[8], 0);         //¼ö¼ö·á
-					  				GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0) - StrToIntDef(ls_Rcrd2[12], 0);      //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  				GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0) - StrToIntDef(ls_Rcrd2[6], 0);         //°Ç¼ö
-					  				GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0) - StrToIntDef(ls_Rcrd2[12], 0);      //¼ö¼ö·á0¿ø °Ç¼ö
+					  				GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0) - StrToIntDef(ls_Rcrd2[7], 0);         //ìš´í–‰ìš”ê¸ˆ
+					  				GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0) - StrToIntDef(ls_Rcrd2[8], 0);         //ìˆ˜ìˆ˜ë£Œ
+					  				GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0) - StrToIntDef(ls_Rcrd2[12], 0);      //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  				GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0) - StrToIntDef(ls_Rcrd2[6], 0);         //ê±´ìˆ˜
+					  				GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0) - StrToIntDef(ls_Rcrd2[12], 0);      //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
 					  				GridA7View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[6], 0) - StrToIntDef(ls_Rcrd2[6], 0)
-					  																										+ StrToIntDef(ls_Rcrd[12], 0) - StrToIntDef(ls_Rcrd2[12], 0);      //°Ç¼öÇÕ°è
+					  																										+ StrToIntDef(ls_Rcrd[12], 0) - StrToIntDef(ls_Rcrd2[12], 0);      //ê±´ìˆ˜í•©ê³„
 
 					  				iCnt := iCnt + StrToIntDef(ls_Rcrd[6], 0) - StrToIntDef(ls_Rcrd2[6], 0);
 					  				iCharge2 := iCharge2 + StrToIntDef(ls_Rcrd[7], 0) - StrToIntDef(ls_Rcrd2[7], 0);
@@ -6020,16 +6020,16 @@ begin
                 begin
                   if slSuju.Strings[i] <> '' then
                   begin
-                    GetTextSeperationEx('¦¢', slSuju[i], ls_Rcrd);
+                    GetTextSeperationEx('â”‚', slSuju[i], ls_Rcrd);
                     iRow := GridA7View.DataController.AppendRecord;
-                    // 1 Record Ãß°¡
+                    // 1 Record ì¶”ê°€
                     GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);
-                    GridA7View.DataController.Values[iRow, 0] := '¹ßÁÖ - ¼öÁÖ';
+                    GridA7View.DataController.Values[iRow, 0] := 'ë°œì£¼ - ìˆ˜ì£¼';
                     GridA7View.DataController.Values[iRow, 2] := ls_Rcrd[1];
                     GridA7View.DataController.Values[iRow, 3] := ls_Rcrd[3];
 					  				GridA7View.DataController.Values[iRow, 4] := ls_Rcrd[5];
-					  				GridA7View.DataController.Values[iRow, 5] := -StrToIntDef(ls_Rcrd[9], 0);            //¹ßÁÖºñ
-					  				// Á¤»êºñÀ² °è»ê
+					  				GridA7View.DataController.Values[iRow, 5] := -StrToIntDef(ls_Rcrd[9], 0);            //ë°œì£¼ë¹„
+					  				// ì •ì‚°ë¹„ìœ¨ ê³„ì‚°
 					  				iCharge := StrToIntDef(ls_Rcrd[7], 0);
 					  				iBalju := Abs(StrToIntDef(ls_Rcrd[9], 0));
 					  				iCom := StrToIntDef(ls_Rcrd[8], 0);
@@ -6047,15 +6047,15 @@ begin
 					  				if iBalju = 0 then
 					  					GridA7View.DataController.Values[iRow, 6] := ''
 					  				else
-					  					GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); //Á¤»êºñÀ²
+					  					GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); //ì •ì‚°ë¹„ìœ¨
 
-					  				GridA7View.DataController.Values[iRow, 7] := -StrToIntDef(ls_Rcrd[7], 0);            //¿îÇà¿ä±İ
-					  				GridA7View.DataController.Values[iRow, 8] := -StrToIntDef(ls_Rcrd[8], 0);            //¼ö¼ö·á
-					  				GridA7View.DataController.Values[iRow, 9] := -StrToIntDef(ls_Rcrd[13], 0);          //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  				GridA7View.DataController.Values[iRow, 10] := -StrToIntDef(ls_Rcrd[6], 0);            //°Ç¼ö
-					  				GridA7View.DataController.Values[iRow, 11] := -StrToIntDef(ls_Rcrd[12], 0);          //¼ö¼ö·á0¿ø °Ç¼ö
+					  				GridA7View.DataController.Values[iRow, 7] := -StrToIntDef(ls_Rcrd[7], 0);            //ìš´í–‰ìš”ê¸ˆ
+					  				GridA7View.DataController.Values[iRow, 8] := -StrToIntDef(ls_Rcrd[8], 0);            //ìˆ˜ìˆ˜ë£Œ
+					  				GridA7View.DataController.Values[iRow, 9] := -StrToIntDef(ls_Rcrd[13], 0);          //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  				GridA7View.DataController.Values[iRow, 10] := -StrToIntDef(ls_Rcrd[6], 0);            //ê±´ìˆ˜
+					  				GridA7View.DataController.Values[iRow, 11] := -StrToIntDef(ls_Rcrd[12], 0);          //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
 					  				GridA7View.DataController.Values[iRow, 12] := -StrToIntDef(ls_Rcrd[6], 0)
-					  																										+ -StrToIntDef(ls_Rcrd[12], 0);      //°Ç¼öÇÕ°è
+					  																										+ -StrToIntDef(ls_Rcrd[12], 0);      //ê±´ìˆ˜í•©ê³„
 
 					  				iCnt := iCnt - StrToIntDef(ls_Rcrd[6], 0);
                     iCharge2 := iCharge2 - StrToIntDef(ls_Rcrd[7], 0);
@@ -6071,19 +6071,19 @@ begin
             end;
             if (slBalju.Count > 0) or (slSuju.Count > 0) then
             begin
-              iRow := GridA7View.DataController.AppendRecord; // 1 Record Ãß°¡
+              iRow := GridA7View.DataController.AppendRecord; // 1 Record ì¶”ê°€
               GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);
-              GridA7View.DataController.Values[iRow, 0] := '¹ßÁÖ - ¼öÁÖ';
-              GridA7View.DataController.Values[iRow, 2] := ' ÇÕ°è';
+              GridA7View.DataController.Values[iRow, 0] := 'ë°œì£¼ - ìˆ˜ì£¼';
+              GridA7View.DataController.Values[iRow, 2] := ' í•©ê³„';
               GridA7View.DataController.Values[iRow, 3] := '';
 					  	GridA7View.DataController.Values[iRow, 4] := '';
-					  	GridA7View.DataController.Values[iRow, 5] := iBalju2;        //¹ßÁÖºñ
-					  	GridA7View.DataController.Values[iRow, 7] := iCharge2;       //¿îÇà¿ä±İ
-					  	GridA7View.DataController.Values[iRow, 8] := iCom2;          //¼ö¼ö·á
-					  	GridA7View.DataController.Values[iRow, 9] := ZeroCharge;              //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  	GridA7View.DataController.Values[iRow, 10] := iCnt;           //°Ç¼ö
-					  	GridA7View.DataController.Values[iRow, 11] := ZeroCnt;                 //¼ö¼ö·á0¿ø °Ç¼ö
-					  	GridA7View.DataController.Values[iRow, 12] := iCnt + ZeroCnt;        //°Ç¼öÇÕ°è
+					  	GridA7View.DataController.Values[iRow, 5] := iBalju2;        //ë°œì£¼ë¹„
+					  	GridA7View.DataController.Values[iRow, 7] := iCharge2;       //ìš´í–‰ìš”ê¸ˆ
+					  	GridA7View.DataController.Values[iRow, 8] := iCom2;          //ìˆ˜ìˆ˜ë£Œ
+					  	GridA7View.DataController.Values[iRow, 9] := ZeroCharge;              //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  	GridA7View.DataController.Values[iRow, 10] := iCnt;           //ê±´ìˆ˜
+					  	GridA7View.DataController.Values[iRow, 11] := ZeroCnt;                 //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
+					  	GridA7View.DataController.Values[iRow, 12] := iCnt + ZeroCnt;        //ê±´ìˆ˜í•©ê³„
 					  end;
 
             iBalju2 := 0;
@@ -6096,15 +6096,15 @@ begin
               try
                 for i := 0 to slOwner.Count - 1 do
                 begin
-					  			GetTextSeperationEx('¦¢', slOwner[i], ls_Rcrd);
-                  iRow := GridA7View.DataController.AppendRecord; // 1 Record Ãß°¡
+					  			GetTextSeperationEx('â”‚', slOwner[i], ls_Rcrd);
+                  iRow := GridA7View.DataController.AppendRecord; // 1 Record ì¶”ê°€
                   GridA7View.DataController.Values[iRow, 1] := IntToStr(iRow + 1);
                   GridA7View.DataController.Values[iRow, 0] := ls_Rcrd[11];
                   GridA7View.DataController.Values[iRow, 2] := ls_Rcrd[1];
                   GridA7View.DataController.Values[iRow, 3] := ls_Rcrd[3];
 					  			GridA7View.DataController.Values[iRow, 4] := ls_Rcrd[5];
-					  			GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);        //¹ßÁÖºñ
-					  			// Á¤»êºñÀ² °è»ê
+					  			GridA7View.DataController.Values[iRow, 5] := StrToIntDef(ls_Rcrd[9], 0);        //ë°œì£¼ë¹„
+					  			// ì •ì‚°ë¹„ìœ¨ ê³„ì‚°
 					  			iCharge := StrToIntDef(ls_Rcrd[7], 0);
 					  			iBalju := Abs(StrToIntDef(ls_Rcrd[9], 0));
 					  			iCom := StrToIntDef(ls_Rcrd[8], 0);
@@ -6122,15 +6122,15 @@ begin
 					  			if iBalju = 0 then
 					  				GridA7View.DataController.Values[iRow, 6] := ''
 					  			else
-					  				GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); //Á¤»êºñÀ²
+					  				GridA7View.DataController.Values[iRow, 6] := FloatToStr(iRateBal) + ':' + FloatToStr(iRateCom); //ì •ì‚°ë¹„ìœ¨
 
-					  			GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);        //¿îÇà¿ä±İ
-					  			GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);        //¼ö¼ö·á
-					  			GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);      //¼ö¼ö·á0¿ø ¿îÇà¿ä±İ
-					  			GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);        //°Ç¼ö
-					  			GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);      //¼ö¼ö·á0¿ø °Ç¼ö
+					  			GridA7View.DataController.Values[iRow, 7] := StrToIntDef(ls_Rcrd[7], 0);        //ìš´í–‰ìš”ê¸ˆ
+					  			GridA7View.DataController.Values[iRow, 8] := StrToIntDef(ls_Rcrd[8], 0);        //ìˆ˜ìˆ˜ë£Œ
+					  			GridA7View.DataController.Values[iRow, 9] := StrToIntDef(ls_Rcrd[13], 0);      //ìˆ˜ìˆ˜ë£Œ0ì› ìš´í–‰ìš”ê¸ˆ
+					  			GridA7View.DataController.Values[iRow, 10] := StrToIntDef(ls_Rcrd[6], 0);        //ê±´ìˆ˜
+					  			GridA7View.DataController.Values[iRow, 11] := StrToIntDef(ls_Rcrd[12], 0);      //ìˆ˜ìˆ˜ë£Œ0ì› ê±´ìˆ˜
 					  			GridA7View.DataController.Values[iRow, 12] := StrToIntDef(ls_Rcrd[6], 0)
-					  																									+ StrToIntDef(ls_Rcrd[12], 0);   //°Ç¼öÇÕ°è
+					  																									+ StrToIntDef(ls_Rcrd[12], 0);   //ê±´ìˆ˜í•©ê³„
 
 					  			iCnt := iCnt + StrToIntDef(ls_Rcrd[6], 0);
 					  			iCharge2 := iCharge2 + StrToIntDef(ls_Rcrd[7], 0);
@@ -6176,10 +6176,10 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
 
                     iRow := GridA9DBTableView.DataController.AppendRecord;
-                    // 1 Record Ãß°¡
+                    // 1 Record ì¶”ê°€
                     GridA9DBTableView.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                     sTemp := ls_Rcrd[0];
                     if sTemp <> '' then
@@ -6188,22 +6188,22 @@ begin
                         + Copy(sTemp, 9, 2) + ':' + Copy(sTemp, 11, 2) + ':' + Copy(sTemp, 13, 2);
                     end;
                     GridA9DBTableView.DataController.Values[iRow, 1] := sTemp;
-                    GridA9DBTableView.DataController.Values[iRow, 2] := ls_Rcrd[1]; //ÃæÀüÁö»ç¸í
-                    GridA9DBTableView.DataController.Values[iRow, 3] := ls_Rcrd[2]; //ÃæÀüÁö»çÄÚµå
-                    GridA9DBTableView.DataController.Values[iRow, 4] := ls_Rcrd[3]; //Ãâ±İÁö»ç¸í
-                    GridA9DBTableView.DataController.Values[iRow, 5] := ls_Rcrd[4]; //Ãâ±İÁö»çÄÚµå
+                    GridA9DBTableView.DataController.Values[iRow, 2] := ls_Rcrd[1]; //ì¶©ì „ì§€ì‚¬ëª…
+                    GridA9DBTableView.DataController.Values[iRow, 3] := ls_Rcrd[2]; //ì¶©ì „ì§€ì‚¬ì½”ë“œ
+                    GridA9DBTableView.DataController.Values[iRow, 4] := ls_Rcrd[3]; //ì¶œê¸ˆì§€ì‚¬ëª…
+                    GridA9DBTableView.DataController.Values[iRow, 5] := ls_Rcrd[4]; //ì¶œê¸ˆì§€ì‚¬ì½”ë“œ
                     if StrToFloatDef(ls_Rcrd[5], 0) = 0 then
                       ls_Rcrd[5] := '0';
-                    GridA9DBTableView.DataController.Values[iRow, 6] := ls_Rcrd[5]; //ÃæÀü±İ
-                    GridA9DBTableView.DataController.Values[iRow, 7] := ls_Rcrd[6]; //Å¸ÀÔ
-                    GridA9DBTableView.DataController.Values[iRow, 8] := ls_Rcrd[7]; //¾ÆÀÌµğ
+                    GridA9DBTableView.DataController.Values[iRow, 6] := ls_Rcrd[5]; //ì¶©ì „ê¸ˆ
+                    GridA9DBTableView.DataController.Values[iRow, 7] := ls_Rcrd[6]; //íƒ€ì…
+                    GridA9DBTableView.DataController.Values[iRow, 8] := ls_Rcrd[7]; //ì•„ì´ë””
                   end;
                 finally
                   ls_Rcrd.Free;
                 end;
               end else
               begin
-								GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+								GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
               end;
             end;
           finally
@@ -6236,10 +6236,10 @@ begin
                 try
                   for i := 0 to lst_Result.length - 1 do
                   begin
-                    GetTextSeperationEx('¦¢', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
+                    GetTextSeperationEx('â”‚', lst_Result.item[i].attributes.getNamedItem('Value').Text, ls_Rcrd);
 
                     iRow := GridA10_1DBTableView.DataController.AppendRecord;
-                    // 1 Record Ãß°¡
+                    // 1 Record ì¶”ê°€
                     GridA10_1DBTableView.DataController.Values[iRow, 0] := IntToStr(iRow + 1);
                     sTemp := ls_Rcrd[0];
                     if sTemp <> '' then
@@ -6248,21 +6248,21 @@ begin
                         + Copy(sTemp, 9, 2) + ':' + Copy(sTemp, 11, 2) + ':' + Copy(sTemp, 13, 2);
                     end;
                     GridA10_1DBTableView.DataController.Values[iRow, 1] := sTemp;
-                    GridA10_1DBTableView.DataController.Values[iRow, 2] := ls_Rcrd[1]; //ÃæÀüÁö»ç¸í
-                    GridA10_1DBTableView.DataController.Values[iRow, 3] := ls_Rcrd[2]; //ÃæÀüÁö»çÄÚµå
-                    GridA10_1DBTableView.DataController.Values[iRow, 4] := ls_Rcrd[3]; //Ãâ±İÁö»ç¸í
-                    GridA10_1DBTableView.DataController.Values[iRow, 5] := ls_Rcrd[4]; //Ãâ±İÁö»çÄÚµå
+                    GridA10_1DBTableView.DataController.Values[iRow, 2] := ls_Rcrd[1]; //ì¶©ì „ì§€ì‚¬ëª…
+                    GridA10_1DBTableView.DataController.Values[iRow, 3] := ls_Rcrd[2]; //ì¶©ì „ì§€ì‚¬ì½”ë“œ
+                    GridA10_1DBTableView.DataController.Values[iRow, 4] := ls_Rcrd[3]; //ì¶œê¸ˆì§€ì‚¬ëª…
+                    GridA10_1DBTableView.DataController.Values[iRow, 5] := ls_Rcrd[4]; //ì¶œê¸ˆì§€ì‚¬ì½”ë“œ
                     if StrToFloatDef(ls_Rcrd[5], 0) = 0 then ls_Rcrd[5] := '0';
-                    GridA10_1DBTableView.DataController.Values[iRow, 6] := ls_Rcrd[5]; //ÃæÀü±İ
-                    GridA10_1DBTableView.DataController.Values[iRow, 7] := ls_Rcrd[6]; //Å¸ÀÔ
-                    GridA10_1DBTableView.DataController.Values[iRow, 8] := ls_Rcrd[7]; //¾ÆÀÌµğ
+                    GridA10_1DBTableView.DataController.Values[iRow, 6] := ls_Rcrd[5]; //ì¶©ì „ê¸ˆ
+                    GridA10_1DBTableView.DataController.Values[iRow, 7] := ls_Rcrd[6]; //íƒ€ì…
+                    GridA10_1DBTableView.DataController.Values[iRow, 8] := ls_Rcrd[7]; //ì•„ì´ë””
                   end;
                 finally
                   ls_Rcrd.Free;
                 end;
               end else
               begin
-								GMessagebox('°Ë»öµÈ ³»¿ëÀÌ ¾ø½À´Ï´Ù.', CDMSE);
+								GMessagebox('ê²€ìƒ‰ëœ ë‚´ìš©ì´ ì—†ìŠµë‹ˆë‹¤.', CDMSE);
               end;
             end;
           finally
@@ -6348,7 +6348,7 @@ var
   iBrNo, iRow: Integer;
   sBrNo: string;
 begin
-  iBrNo := GridA6View.GetColumnByFieldName('Áö»çÄÚµå').Index;
+  iBrNo := GridA6View.GetColumnByFieldName('ì§€ì‚¬ì½”ë“œ').Index;
   iRow := GridA6View.DataController.FocusedRecordIndex;
   if iRow < 0 then
     exit;
@@ -6397,13 +6397,13 @@ begin
     iRow := GridA7View.DataController.GetRowInfo(ARecord.Index).RecordIndex;
     if GridA7View.DataController.Values[iRow, 0] = null then
       exit;
-    if GridA7View.DataController.Values[iRow, 0] = '¹ßÁÖ' then
+    if GridA7View.DataController.Values[iRow, 0] = 'ë°œì£¼' then
       AStyle.Color := $00B9FFFA
     else
-    if GridA7View.DataController.Values[iRow, 0] = '¼öÁÖ' then
+    if GridA7View.DataController.Values[iRow, 0] = 'ìˆ˜ì£¼' then
       AStyle.Color := $00FFF4E3
     else
-    if GridA7View.DataController.Values[iRow, 0] = '¹ßÁÖ - ¼öÁÖ' then
+    if GridA7View.DataController.Values[iRow, 0] = 'ë°œì£¼ - ìˆ˜ì£¼' then
       AStyle.Color := $00FFC4C4
     else
       AStyle.Color := $00CEFFCE;
