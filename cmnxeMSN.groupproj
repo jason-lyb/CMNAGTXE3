@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0623F8F5-1F98-4E73-8CE7-60D2091FAD37}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CMNAGTXE.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\DEV_CMessenger2\Src\CMessenger2.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CMNAGTXE">
+        <MSBuild Projects="CMNAGTXE.dproj"/>
+    </Target>
+    <Target Name="CMNAGTXE:Clean">
+        <MSBuild Projects="CMNAGTXE.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CMNAGTXE:Make">
+        <MSBuild Projects="CMNAGTXE.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CMessenger2">
+        <MSBuild Projects="D:\DEV_CMessenger2\Src\CMessenger2.dproj"/>
+    </Target>
+    <Target Name="CMessenger2:Clean">
+        <MSBuild Projects="D:\DEV_CMessenger2\Src\CMessenger2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CMessenger2:Make">
+        <MSBuild Projects="D:\DEV_CMessenger2\Src\CMessenger2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CMNAGTXE;CMessenger2"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CMNAGTXE:Clean;CMessenger2:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CMNAGTXE:Make;CMessenger2:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
