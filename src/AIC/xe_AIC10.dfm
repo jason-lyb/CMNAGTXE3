@@ -11,7 +11,6 @@ object frm_AIC10: Tfrm_AIC10
   Font.Name = #44404#47548#52404
   Font.Style = []
   FormStyle = fsStayOnTop
-  OldCreateOrder = False
   Position = poMainFormCenter
   Scaled = False
   OnActivate = FormActivate

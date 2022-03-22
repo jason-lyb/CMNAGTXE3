@@ -113,7 +113,7 @@ procedure Tfrm_AIC10.FormCreate(Sender: TObject);
 var
 	Save: Integer;
 begin
-	//====================================================
+	//==========================================================
 	// 폼 타이틀 제거..
 	Save := GetWindowLong(Handle, gwl_Style);
 	if (Save and ws_Caption) = ws_Caption then
